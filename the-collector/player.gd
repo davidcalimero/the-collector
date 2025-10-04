@@ -11,6 +11,7 @@ const DASH_VELOCITY = 900.0
 const DASH_REVERT_SPEED = 50.0
 const DASH_COOLDOWN = 0.5
 const GLIDE_MAX_FALL_SPEED = 50
+const WALL_JUMP_MAX_FALL_SPEED = 75
 const WALL_JUMP_X_VELOCITY = 300.0
 const WALL_JUMP_Y_MULTIPLIER = 0.75
 const WALL_JUMP_COOLDOWN = 0.25
@@ -28,13 +29,15 @@ var current_animation
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
-	if not is_on_floor() and not is_on_wall():
+	if not is_on_floor():
 		var is_glide_button_pressed = Input.is_action_pressed("glide")
 		velocity += get_gravity() * delta
-		if is_glide_button_pressed and velocity.y > 0 and has_card_skill_equipped(GLIDE_CARD_SKILL):
+		if is_glide_button_pressed and velocity.y > 0 and has_card_skill_equipped(GLIDE_CARD_SKILL) and animated_sprite.animation != "wall_grab":
 			velocity.y = move_toward(velocity.y, GLIDE_MAX_FALL_SPEED, 30)
 			animated_sprite.animation = "glide"
-		else:
+		elif is_on_wall() and velocity.y > 0:
+			velocity.y = move_toward(velocity.y, WALL_JUMP_MAX_FALL_SPEED, 30)
+		elif not is_on_wall():
 			animated_sprite.animation = "jump" if velocity.y <= 0.0 else "fall"
 	elif is_on_floor() and double_jumped:
 		double_jumped = false
