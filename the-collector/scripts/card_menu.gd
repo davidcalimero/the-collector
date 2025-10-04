@@ -39,6 +39,8 @@ func _unhandled_input(event):
 		_toggle_menu()
 		get_viewport().set_input_as_handled()
 		return
+	if not visible:
+		return
 	if _choosing_slot:
 		if event.is_action_pressed("ui_accept"):
 			_confirm_apply_to_focused_slot()
