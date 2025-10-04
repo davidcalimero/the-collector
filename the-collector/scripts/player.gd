@@ -1,11 +1,11 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 const DOUBLE_JUMP_CARD_SKILL = "double_jump"
 const DASH_CARD_SKILL = "dash"
 const WALL_GRAB_CARD_SKILL = "wall_grab"
 const GLIDE_CARD_SKILL = "glide"
 
-const SPEED = 300.0
+const SPEED = 150.0
 const JUMP_VELOCITY = -400.0
 const DASH_VELOCITY = 900.0
 const DASH_REVERT_SPEED = 50.0
@@ -50,7 +50,7 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("move_left", "move_right")
 	if can_move:
 		# Get the input direction and handle the movement/deceleration.
-		if direction and abs(velocity.x) < SPEED:
+		if direction and abs(velocity.x) <= SPEED:
 			velocity.x = direction * SPEED
 		elif abs(velocity.x) > SPEED:
 			velocity.x = move_toward(velocity.x, 0, DASH_REVERT_SPEED)

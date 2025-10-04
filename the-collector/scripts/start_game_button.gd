@@ -1,6 +1,6 @@
 extends Button
 
-@export var target_scene_path: String = "res://main_scene.tscn"
+@export var target_scene_path: String = "res://scenes//main_scene.tscn"
 
 func _ready():
 	Music.play_music(load("res://assets/audio/music.mp3"))

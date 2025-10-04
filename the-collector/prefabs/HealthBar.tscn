@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dmiorlehj4blb"]
 
 [ext_resource type="Texture2D" uid="uid://i4ka7vhlbe36" path="res://assets/Sprites/Health Bar Texture.png" id="1"]
-[ext_resource type="Script" uid="uid://cgk0vgkfp5v0w" path="res://HealthBar.gd" id="2"]
+[ext_resource type="Script" uid="uid://cgk0vgkfp5v0w" path="res://scripts/HealthBar.gd" id="2"]
 
 [sub_resource type="AtlasTexture" id="1"]
 atlas = ExtResource("1")

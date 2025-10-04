@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bg4i1us4b8e8y"]
+[gd_scene load_steps=6 format=3 uid="uid://bcofhcwjbja76"]
 
 [ext_resource type="Texture2D" uid="uid://cdtu266pjoum6" path="res://assets/Sprites/Cards/cards_spreadsheet.png" id="1_klady"]
 [ext_resource type="Script" uid="uid://dwlqp2xnyrecr" path="res://skill_card.gd" id="2_a2lrr"]
