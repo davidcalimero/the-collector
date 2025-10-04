@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://l51rcv6nsgt0"]
+[gd_scene load_steps=6 format=3 uid="uid://l51rcv6nsgt0"]
 
-[ext_resource type="PackedScene" uid="uid://bfyaoxkswd1w2" path="res://player.tscn" id="1_0f027"]
+[ext_resource type="PackedScene" path="res://player.tscn" id="1_0f027"]
 [ext_resource type="FontFile" uid="uid://bja3lk3s3c70f" path="res://assets/fonts/ByteBounce.ttf" id="2_2c62f"]
+[ext_resource type="PackedScene" uid="uid://bdh62eraerv7u" path="res://ingame_ui.tscn" id="3_gyfs4"]
 
 [sub_resource type="TileSet" id="TileSet_0f027"]
 
@@ -43,3 +44,7 @@ offset_bottom = -34.0
 theme_override_fonts/font = ExtResource("2_2c62f")
 theme_override_font_sizes/font_size = 32
 text = "This is a game about collecting."
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Control" parent="UI" instance=ExtResource("3_gyfs4")]
