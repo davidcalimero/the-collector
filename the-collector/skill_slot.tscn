@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://srtrhx5jpm1g" path="res://assets/Sprites/skill_slot.png" id="1_kpjpb"]
 
 [node name="SkillSlot" type="TextureRect"]
-custom_minimum_size = Vector2(64, 80)
+custom_minimum_size = Vector2(128, 160)
 offset_right = 109.0
 offset_bottom = 136.0
 texture = ExtResource("1_kpjpb")
