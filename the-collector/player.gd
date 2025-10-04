@@ -73,8 +73,6 @@ func _physics_process(delta: float) -> void:
 		elif velocity.x > 0.0:
 			animated_sprite.flip_h = false
 
-	
-
 	move_and_slide()
 
 func verify_jump() -> void:
@@ -106,6 +104,7 @@ func verify_wall_jump() -> void:
 		velocity.y = JUMP_VELOCITY * WALL_JUMP_Y_MULTIPLIER
 		velocity.x = direction * WALL_JUMP_X_VELOCITY
 		can_move = false
+		double_jumped = false
 		
 		if wall_jump_timer == null:
 			wall_jump_timer = Timer.new()
