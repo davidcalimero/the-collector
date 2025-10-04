@@ -5,9 +5,14 @@ extends TextureRect
 
 func _ready():
 	$Name.text = Name
+	focus_mode = Control.FOCUS_ALL
 	stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	mouse_filter = Control.MOUSE_FILTER_PASS
 	connect("visibility_changed", _on_visibility_changed)
+
+	# Toggle ring on focus
+	focus_entered.connect(func(): $FocusFrame.visible = true)
+	focus_exited.connect(func(): $FocusFrame.visible = false)
 
 func _on_visibility_changed():
 	if visible:
