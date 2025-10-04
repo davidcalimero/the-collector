@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bfyaoxkswd1w2"]
+[gd_scene load_steps=11 format=3 uid="uid://bfyaoxkswd1w2"]
 
 [ext_resource type="Script" uid="uid://dyme08yeqjkl6" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://dmw1ap1cvklqr" path="res://assets/Sprites/Player/playerAnimation.png" id="2_onrkg"]
@@ -10,6 +10,10 @@ region = Rect2(128, 0, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_onrkg"]
 atlas = ExtResource("2_onrkg")
 region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jxqw"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(320, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hqtel"]
 atlas = ExtResource("2_onrkg")
@@ -39,6 +43,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jxqw")
+}],
+"loop": true,
+"name": &"glide",
 "speed": 5.0
 }, {
 "frames": [{
@@ -75,7 +87,7 @@ script = ExtResource("1_onrkg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1jxqw")
-animation = &"idle"
+animation = &"glide"
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 visible = false

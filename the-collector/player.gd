@@ -8,6 +8,7 @@ const JUMP_VELOCITY = -400.0
 const DASH_VELOCITY = 900.0
 const DASH_REVERT_SPEED = 50.0
 const DASH_COOLDOWN = 0.5
+const GLIDE_MAX_FALL_SPEED = 50
 
 var double_jumped = false
 var can_use_dash = true
@@ -15,21 +16,21 @@ var dash_timer : Timer
 
 var current_animation
 
-func _process(delta: float) -> void:
-	if velocity.x < 0.0:
-		$"AnimatedSprite2D".flip_h = true
-	elif velocity.x > 0.0:
-		$"AnimatedSprite2D".flip_h = false
+@onready var animated_sprite = $AnimatedSprite2D
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
+		var is_glide_button_pressed = Input.is_action_pressed("glide")
 		velocity += get_gravity() * delta
-		$"AnimatedSprite2D".animation = "jump" if velocity.y <= 0.0 else "fall"
+		if is_glide_button_pressed and velocity.y > 0:
+			velocity.y = move_toward(velocity.y, GLIDE_MAX_FALL_SPEED, 30)
+			animated_sprite.animation = "glide"
+		else:
+			animated_sprite.animation = "jump" if velocity.y <= 0.0 else "fall"
 	elif is_on_floor() and double_jumped:
 		double_jumped = false
 
-	# Handle jump.
 	verify_jump()	
 	verify_double_jump()
 	verify_dash()
@@ -45,24 +46,27 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	if not can_use_dash and abs(velocity.x) > SPEED:
-		$"AnimatedSprite2D".animation = "dash"
+		animated_sprite.animation = "dash"
 	elif is_on_floor():
 		if direction:
-			$"AnimatedSprite2D".animation = "move"
+			animated_sprite.animation = "move"
 		else:
-			$"AnimatedSprite2D".animation = "idle"
+			animated_sprite.animation = "idle"
+
+	if velocity.x < 0.0:
+		animated_sprite.flip_h = true
+	elif velocity.x > 0.0:
+		animated_sprite.flip_h = false
 
 	move_and_slide()
 
 func verify_jump() -> void:
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-		$"AnimatedSprite2D".animation = "jump"
 	
 func verify_double_jump() -> void:
 	if Input.is_action_just_pressed("jump") and not is_on_floor() and has_card_skill_equipped(DOUBLE_JUMP_CARD_SKILL) and not double_jumped:
 		velocity.y = JUMP_VELOCITY
-		$"AnimatedSprite2D".animation = "jump"
 		double_jumped = true;
 	
 func verify_dash() -> void:
@@ -78,9 +82,7 @@ func verify_dash() -> void:
 		dash_timer.wait_time = DASH_COOLDOWN
 		dash_timer.timeout.connect(_on_dash_timer_timeout)
 		dash_timer.start()
-		
-		$"AnimatedSprite2D".animation = "dash"
-		
+	
 func _on_dash_timer_timeout() -> void:
 	can_use_dash = true
 	
