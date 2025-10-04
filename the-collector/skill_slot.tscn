@@ -1,14 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://d51kub20jal"]
+[gd_scene load_steps=4 format=3 uid="uid://d51kub20jal"]
 
 [ext_resource type="Script" uid="uid://duwh04lg4071f" path="res://skill_slot.gd" id="1_8nqtg"]
-[ext_resource type="Texture2D" uid="uid://srtrhx5jpm1g" path="res://assets/Sprites/skill_slot.png" id="1_kpjpb"]
+[ext_resource type="Texture2D" uid="uid://cdtu266pjoum6" path="res://assets/Sprites/Cards/cards_spreadsheet.png" id="3_54b4s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54b4s"]
+atlas = ExtResource("3_54b4s")
+region = Rect2(168.95737, 0.9774194, 19.038422, 27.04195)
 
 [node name="SkillSlot" type="TextureRect"]
-custom_minimum_size = Vector2(128, 160)
+custom_minimum_size = Vector2(112, 160)
 offset_right = 109.0
 offset_bottom = 136.0
-texture = ExtResource("1_kpjpb")
+texture = SubResource("AtlasTexture_54b4s")
 expand_mode = 1
 stretch_mode = 4
 script = ExtResource("1_8nqtg")
-empty_icon = ExtResource("1_kpjpb")

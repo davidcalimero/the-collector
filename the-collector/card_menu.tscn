@@ -1,8 +1,34 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxdkwbc6ad5ii"]
+[gd_scene load_steps=10 format=3 uid="uid://cxdkwbc6ad5ii"]
 
 [ext_resource type="Script" uid="uid://b077h8dp0p8he" path="res://card_menu.gd" id="1_ed1gj"]
 [ext_resource type="PackedScene" uid="uid://bg4i1us4b8e8y" path="res://skill_card.tscn" id="2_lhlef"]
 [ext_resource type="FontFile" uid="uid://bja3lk3s3c70f" path="res://assets/fonts/ByteBounce.ttf" id="2_yqe6s"]
+[ext_resource type="Texture2D" uid="uid://cdtu266pjoum6" path="res://assets/Sprites/Cards/cards_spreadsheet.png" id="4_yqe6s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_psv01"]
+resource_local_to_scene = true
+atlas = ExtResource("4_yqe6s")
+region = Rect2(22.00555, 1.024862, 19.092472, 27.158655)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jji45"]
+resource_local_to_scene = true
+atlas = ExtResource("4_yqe6s")
+region = Rect2(0.9800606, 1.0036826, 19.104103, 27.14794)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4xtq"]
+resource_local_to_scene = true
+atlas = ExtResource("4_yqe6s")
+region = Rect2(169.05206, 1.0036826, 19.06665, 27.14794)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_niub3"]
+resource_local_to_scene = true
+atlas = ExtResource("4_yqe6s")
+region = Rect2(42.976425, 1.0058107, 19.021988, 27.001106)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7c3oq"]
+resource_local_to_scene = true
+atlas = ExtResource("4_yqe6s")
+region = Rect2(168.94075, 1.0036826, 19.015396, 27.016655)
 
 [node name="CardMenu" type="PanelContainer"]
 anchors_preset = 8
@@ -50,21 +76,26 @@ columns = 3
 
 [node name="SkillCard1" parent="MarginContainer/VBoxContainer/MarginContainer/CardGrid" instance=ExtResource("2_lhlef")]
 layout_mode = 2
+texture = SubResource("AtlasTexture_psv01")
+skill = 0
 
 [node name="SkillCard2" parent="MarginContainer/VBoxContainer/MarginContainer/CardGrid" instance=ExtResource("2_lhlef")]
 layout_mode = 2
-skill = 1
+texture = SubResource("AtlasTexture_jji45")
 
 [node name="SkillCard3" parent="MarginContainer/VBoxContainer/MarginContainer/CardGrid" instance=ExtResource("2_lhlef")]
 layout_mode = 2
+texture = SubResource("AtlasTexture_h4xtq")
 skill = 2
 
 [node name="SkillCard4" parent="MarginContainer/VBoxContainer/MarginContainer/CardGrid" instance=ExtResource("2_lhlef")]
 layout_mode = 2
+texture = SubResource("AtlasTexture_niub3")
 skill = 3
 
 [node name="SkillCard5" parent="MarginContainer/VBoxContainer/MarginContainer/CardGrid" instance=ExtResource("2_lhlef")]
 layout_mode = 2
+texture = SubResource("AtlasTexture_7c3oq")
 skill = 4
 
 [node name="CloseButton" type="Button" parent="MarginContainer/VBoxContainer"]

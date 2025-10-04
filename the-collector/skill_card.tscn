@@ -1,19 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://bg4i1us4b8e8y"]
+[gd_scene load_steps=4 format=3 uid="uid://bg4i1us4b8e8y"]
 
+[ext_resource type="Texture2D" uid="uid://cdtu266pjoum6" path="res://assets/Sprites/Cards/cards_spreadsheet.png" id="1_klady"]
 [ext_resource type="Script" uid="uid://dwlqp2xnyrecr" path="res://skill_card.gd" id="2_a2lrr"]
-[ext_resource type="Texture2D" uid="uid://cpt7yby5l0uoy" path="res://icon.svg" id="3_meq1m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2lrr"]
+resource_local_to_scene = true
+atlas = ExtResource("1_klady")
+region = Rect2(0.9800606, 1.0036826, 19.104103, 27.14794)
 
 [node name="SkillCard" type="TextureRect"]
-custom_minimum_size = Vector2(128, 160)
-offset_right = 128.0
+custom_minimum_size = Vector2(112, 160)
+offset_right = 112.0
 offset_bottom = 160.0
-texture = ExtResource("3_meq1m")
+texture = SubResource("AtlasTexture_a2lrr")
 expand_mode = 1
 stretch_mode = 4
 script = ExtResource("2_a2lrr")
+skill = 1
 
 [node name="Locked" type="ColorRect" parent="."]
 layout_mode = 0
-offset_right = 128.0
+offset_right = 112.0
 offset_bottom = 160.0
 color = Color(0, 0, 0, 0.8039216)
