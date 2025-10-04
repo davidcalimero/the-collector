@@ -11,7 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="."]
+[node name="StartButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -31,4 +31,4 @@ theme_override_font_sizes/font_size = 16
 text = "Start Game"
 script = ExtResource("1_jwbto")
 
-[connection signal="pressed" from="Button" to="Button" method="_on_button_pressed"]
+[connection signal="pressed" from="StartButton" to="StartButton" method="_on_button_pressed"]
