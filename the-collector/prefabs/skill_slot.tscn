@@ -35,6 +35,7 @@ offset_top = 119.0
 offset_right = 91.0
 offset_bottom = 142.0
 theme_override_fonts/font = ExtResource("3_cw2dn")
+theme_override_font_sizes/font_size = 20
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
