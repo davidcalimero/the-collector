@@ -1,3 +1,45 @@
-[gd_scene format=3 uid="uid://l51rcv6nsgt0"]
+[gd_scene load_steps=5 format=3 uid="uid://l51rcv6nsgt0"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="PackedScene" uid="uid://bfyaoxkswd1w2" path="res://player.tscn" id="1_0f027"]
+[ext_resource type="FontFile" uid="uid://bja3lk3s3c70f" path="res://assets/fonts/ByteBounce.ttf" id="2_2c62f"]
+
+[sub_resource type="TileSet" id="TileSet_0f027"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_2c62f"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_0f027")]
+position = Vector2(1, 0)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-1, -10)
+zoom = Vector2(4, 4)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_0f027")
+format = 2
+
+[node name="World Boundary" type="StaticBody2D" parent="."]
+position = Vector2(0, 16.445)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World Boundary"]
+shape = SubResource("WorldBoundaryShape2D_2c62f")
+
+[node name="Hello" type="Label" parent="."]
+offset_left = -127.0
+offset_top = -51.0
+offset_right = -39.0
+offset_bottom = -28.0
+theme_override_fonts/font = ExtResource("2_2c62f")
+theme_override_font_sizes/font_size = 32
+text = "Hello :D"
+
+[node name="This is a game" type="Label" parent="."]
+offset_left = 226.0
+offset_top = -57.0
+offset_right = 606.0
+offset_bottom = -34.0
+theme_override_fonts/font = ExtResource("2_2c62f")
+theme_override_font_sizes/font_size = 32
+text = "This is a game about collecting."
