@@ -11,8 +11,6 @@ texture = ExtResource("3_meq1m")
 expand_mode = 1
 stretch_mode = 4
 script = ExtResource("2_a2lrr")
-skill_id = null
-unlocked = null
 
 [node name="Locked" type="ColorRect" parent="."]
 layout_mode = 0

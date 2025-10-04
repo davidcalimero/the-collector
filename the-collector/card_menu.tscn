@@ -50,28 +50,22 @@ columns = 3
 
 [node name="SkillCard1" parent="MarginContainer/VBoxContainer/MarginContainer/CardGrid" instance=ExtResource("2_lhlef")]
 layout_mode = 2
-skill_id = "dash"
-unlocked = true
 
 [node name="SkillCard2" parent="MarginContainer/VBoxContainer/MarginContainer/CardGrid" instance=ExtResource("2_lhlef")]
 layout_mode = 2
-skill_id = "double_jump"
-unlocked = true
+skill = 1
 
 [node name="SkillCard3" parent="MarginContainer/VBoxContainer/MarginContainer/CardGrid" instance=ExtResource("2_lhlef")]
 layout_mode = 2
-skill_id = "block"
-unlocked = false
+skill = 2
 
 [node name="SkillCard4" parent="MarginContainer/VBoxContainer/MarginContainer/CardGrid" instance=ExtResource("2_lhlef")]
 layout_mode = 2
-skill_id = "glide"
-unlocked = false
+skill = 3
 
 [node name="SkillCard5" parent="MarginContainer/VBoxContainer/MarginContainer/CardGrid" instance=ExtResource("2_lhlef")]
 layout_mode = 2
-skill_id = "charge_attack"
-unlocked = false
+skill = 4
 
 [node name="CloseButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
