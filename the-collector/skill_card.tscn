@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg4i1us4b8e8y"]
+
+[ext_resource type="Script" uid="uid://dwlqp2xnyrecr" path="res://skill_card.gd" id="2_a2lrr"]
+[ext_resource type="Texture2D" uid="uid://cpt7yby5l0uoy" path="res://icon.svg" id="3_meq1m"]
+
+[node name="SkillCard" type="TextureRect"]
+custom_minimum_size = Vector2(128, 160)
+offset_right = 128.0
+offset_bottom = 160.0
+texture = ExtResource("3_meq1m")
+expand_mode = 1
+stretch_mode = 4
+script = ExtResource("2_a2lrr")
+skill_id = null
+unlocked = null
+
+[node name="Locked" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 160.0
+color = Color(0, 0, 0, 0.8039216)

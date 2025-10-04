@@ -1,0 +1,77 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxdkwbc6ad5ii"]
+
+[ext_resource type="Script" uid="uid://b077h8dp0p8he" path="res://card_menu.gd" id="1_ed1gj"]
+[ext_resource type="PackedScene" uid="uid://bg4i1us4b8e8y" path="res://skill_card.tscn" id="2_lhlef"]
+
+[node name="CardMenu" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -216.0
+offset_top = -213.0
+offset_right = 216.0
+offset_bottom = 213.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ed1gj")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Skills"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="SkillCard1" parent="MarginContainer/VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("2_lhlef")]
+layout_mode = 2
+skill_id = ""
+unlocked = false
+
+[node name="SkillCard2" parent="MarginContainer/VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("2_lhlef")]
+layout_mode = 2
+skill_id = ""
+unlocked = false
+
+[node name="SkillCard3" parent="MarginContainer/VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("2_lhlef")]
+layout_mode = 2
+skill_id = ""
+unlocked = false
+
+[node name="SkillCard4" parent="MarginContainer/VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("2_lhlef")]
+layout_mode = 2
+skill_id = ""
+unlocked = false
+
+[node name="SkillCard5" parent="MarginContainer/VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("2_lhlef")]
+layout_mode = 2
+skill_id = ""
+unlocked = false
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Close
+"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_close_menu"]

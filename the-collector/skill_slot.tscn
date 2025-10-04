@@ -11,3 +11,7 @@ texture = ExtResource("1_kpjpb")
 expand_mode = 1
 stretch_mode = 4
 script = ExtResource("1_8nqtg")
+skill_name = null
+skill_id = null
+skill_data = null
+empty_icon = ExtResource("1_kpjpb")
