@@ -5,6 +5,7 @@ var skill_icon: Texture2D = null
 
 func _ready():
 	stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	focus_mode = Control.FOCUS_ALL
 	_refresh_visual()
 
 func _refresh_visual():
