@@ -34,7 +34,7 @@ func _ready() -> void:
 		if _choosing_slot:
 			_update_preview_position())
 
-func _unhandled_input(event):
+func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_card_menu"):
 		_toggle_menu()
 		get_viewport().set_input_as_handled()
@@ -43,22 +43,28 @@ func _unhandled_input(event):
 		return
 	if _choosing_slot:
 		if event.is_action_pressed("ui_accept"):
+			accept_event();
 			_confirm_apply_to_focused_slot()
-			get_viewport().set_input_as_handled()
+			return
+		if event.is_action_pressed("ui_up"):
+			accept_event();
+			_end_choose_slot()
 			return
 		if event.is_action_pressed("ui_cancel"):
+			accept_event();
 			_end_choose_slot()
-			get_viewport().set_input_as_handled()
 			return
+		return
 		return
 	if event.is_action_pressed("ui_accept"):
 		var f := get_viewport().gui_get_focus_owner()
 		if f == $MarginContainer/VBoxContainer/CloseButton : 
+			accept_event();
 			_toggle_menu()
 			return
 		if f and f.is_unlocked():
+			accept_event();
 			_start_choose_slot(f)
-			get_viewport().set_input_as_handled()
 			return
 
 func _toggle_menu():
