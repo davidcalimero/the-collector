@@ -29,3 +29,5 @@ scale = Vector2(3, 3)
 pivot_offset = Vector2(50, 15)
 text = "Start Game"
 script = ExtResource("1_jwbto")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_button_pressed"]
