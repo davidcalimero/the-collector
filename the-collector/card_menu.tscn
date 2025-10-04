@@ -77,6 +77,8 @@ theme_override_constants/margin_bottom = 10
 
 [node name="CardGrid" type="GridContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 columns = 3
 
 [node name="SkillCard1" parent="MarginContainer/VBoxContainer/MarginContainer/CardGrid" instance=ExtResource("2_lhlef")]
