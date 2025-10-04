@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dl5itd8effpv7"]
+
+[ext_resource type="Script" uid="uid://bh8ttjnuloykr" path="res://skill_bar.gd" id="1_0ln37"]
+[ext_resource type="PackedScene" uid="uid://d51kub20jal" path="res://skill_slot.tscn" id="2_0ln37"]
+
+[node name="SkillBar" type="HBoxContainer"]
+offset_right = 200.0
+offset_bottom = 80.0
+script = ExtResource("1_0ln37")
+
+[node name="SkillSlot1" parent="." instance=ExtResource("2_0ln37")]
+layout_mode = 2
+
+[node name="SkillSlot2" parent="." instance=ExtResource("2_0ln37")]
+layout_mode = 2
+
+[node name="SkillSlot3" parent="." instance=ExtResource("2_0ln37")]
+layout_mode = 2
