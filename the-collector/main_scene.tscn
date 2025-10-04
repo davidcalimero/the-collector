@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://l51rcv6nsgt0"]
+[gd_scene load_steps=9 format=3 uid="uid://l51rcv6nsgt0"]
 
 [ext_resource type="PackedScene" uid="uid://bfyaoxkswd1w2" path="res://player.tscn" id="1_0f027"]
 [ext_resource type="FontFile" uid="uid://bja3lk3s3c70f" path="res://assets/fonts/ByteBounce.ttf" id="2_2c62f"]
 [ext_resource type="Texture2D" uid="uid://b6lmbedjq5faf" path="res://assets/Sprites/Environment/spritesheetBlocks.png" id="2_d5x1h"]
 [ext_resource type="PackedScene" uid="uid://bdh62eraerv7u" path="res://ingame_ui.tscn" id="3_gyfs4"]
+[ext_resource type="PackedScene" uid="uid://6o4vmflhrj77" path="res://skill_pickup.tscn" id="5_8mm7a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8mm7a"]
 texture = ExtResource("2_d5x1h")
@@ -57,4 +58,22 @@ text = "This is a game about collecting."
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Control" parent="UI" instance=ExtResource("3_gyfs4")]
-anchors_preset = 15
+
+[node name="pickup1" parent="." instance=ExtResource("5_8mm7a")]
+position = Vector2(233, -39)
+
+[node name="pickup2" parent="." instance=ExtResource("5_8mm7a")]
+position = Vector2(338, 9)
+skill = 1
+
+[node name="pickup3" parent="." instance=ExtResource("5_8mm7a")]
+position = Vector2(352, -39)
+skill = 2
+
+[node name="pickup4" parent="." instance=ExtResource("5_8mm7a")]
+position = Vector2(284, -109)
+skill = 3
+
+[node name="pickup5" parent="." instance=ExtResource("5_8mm7a")]
+position = Vector2(-153, 8)
+skill = 4

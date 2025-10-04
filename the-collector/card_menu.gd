@@ -1,12 +1,5 @@
 extends PanelContainer
 
-func _ready():
-	GlobalSignals.emit_signal("learn_skill", GlobalSignals.SkillType.DASH)
-	GlobalSignals.emit_signal("learn_skill", GlobalSignals.SkillType.DOUBLE_JUMP)
-	GlobalSignals.emit_signal("learn_skill", GlobalSignals.SkillType.GLIDE)
-	GlobalSignals.emit_signal("learn_skill", GlobalSignals.SkillType.CHARGE_ATTACK)
-	GlobalSignals.emit_signal("learn_skill", GlobalSignals.SkillType.BLOCK)
-
 func _unhandled_input(event):
 	if event.is_action_pressed("toggle_card_menu"):
 		_toggle_menu()
