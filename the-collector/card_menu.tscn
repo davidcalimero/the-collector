@@ -78,25 +78,30 @@ columns = 3
 layout_mode = 2
 texture = SubResource("AtlasTexture_psv01")
 skill = 0
+Name = "Dash"
 
 [node name="SkillCard2" parent="MarginContainer/VBoxContainer/MarginContainer/CardGrid" instance=ExtResource("2_lhlef")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_jji45")
+Name = "Double Jump"
 
 [node name="SkillCard3" parent="MarginContainer/VBoxContainer/MarginContainer/CardGrid" instance=ExtResource("2_lhlef")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_h4xtq")
 skill = 2
+Name = "Block"
 
 [node name="SkillCard4" parent="MarginContainer/VBoxContainer/MarginContainer/CardGrid" instance=ExtResource("2_lhlef")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_niub3")
 skill = 3
+Name = "Glide"
 
 [node name="SkillCard5" parent="MarginContainer/VBoxContainer/MarginContainer/CardGrid" instance=ExtResource("2_lhlef")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_7c3oq")
 skill = 4
+Name = "Charge Attack"
 
 [node name="CloseButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

@@ -17,6 +17,7 @@ func _drop_data(at_position, data):
 		GlobalSignals.emit_signal("unequip_skill", skill)
 		skill = data.get("skill")
 		skill_icon = data.get("skill_icon")
+		$Name.text = data.get("name")
 		GlobalSignals.emit_signal("equip_skill", skill)
 		_refresh_visual()
 

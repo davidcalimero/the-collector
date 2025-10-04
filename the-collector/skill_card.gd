@@ -1,8 +1,10 @@
 extends TextureRect
 
 @export var skill: GlobalSignals.SkillType
+@export var Name : String
 
 func _ready():
+	$Name.text = Name
 	stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	mouse_filter = Control.MOUSE_FILTER_PASS
 	connect("visibility_changed", _on_visibility_changed)
@@ -22,7 +24,8 @@ func _get_drag_data(at_position):
 		"source_type": "card",
 		"from_path": get_path(),
 		"skill": skill,
-		"skill_icon": texture
+		"skill_icon": texture,
+		"name": $Name.text
 	}
 
 func _can_drop_data(at_position, data):
