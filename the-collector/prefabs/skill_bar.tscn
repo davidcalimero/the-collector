@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dl5itd8effpv7"]
+[gd_scene load_steps=6 format=3 uid="uid://r6wlfxh3wxnr"]
 
 [ext_resource type="PackedScene" uid="uid://d51kub20jal" path="res://skill_slot.tscn" id="2_0ln37"]
 [ext_resource type="Texture2D" uid="uid://cdtu266pjoum6" path="res://assets/Sprites/Cards/cards_spreadsheet.png" id="3_y0yaa"]

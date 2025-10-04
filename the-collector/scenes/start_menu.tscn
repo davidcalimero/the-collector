@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://duycsow7avkda"]
 
 [ext_resource type="FontFile" uid="uid://bja3lk3s3c70f" path="res://assets/fonts/ByteBounce.ttf" id="1_ia0g5"]
-[ext_resource type="Script" uid="uid://uxeth7vy0soo" path="res://start_game_button.gd" id="1_jwbto"]
+[ext_resource type="Script" uid="uid://uxeth7vy0soo" path="res://scripts/start_game_button.gd" id="1_jwbto"]
 
 [node name="Control" type="Control"]
 layout_mode = 3

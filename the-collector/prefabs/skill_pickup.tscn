@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://6o4vmflhrj77"]
 
-[ext_resource type="Script" uid="uid://c0pwljgt2hh2u" path="res://skill_pickup.gd" id="1_vs624"]
+[ext_resource type="Script" uid="uid://c0pwljgt2hh2u" path="res://scripts/skill_pickup.gd" id="1_vs624"]
 [ext_resource type="Texture2D" uid="uid://cdcewuoud4brj" path="res://assets/Sprites/Cards/card_animation.png" id="2_vs624"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n1ejq"]
@@ -38,6 +38,7 @@ radius = 9.999999
 [node name="pickup" type="Area2D"]
 monitorable = false
 script = ExtResource("1_vs624")
+skill = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_knk27")
