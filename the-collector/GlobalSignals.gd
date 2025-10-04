@@ -1,6 +1,6 @@
 extends Node
 
-enum SkillType { DASH, DOUBLE_JUMP, BLOCK, GLIDE, CHARGE_ATTACK }
+enum SkillType { DASH, DOUBLE_JUMP, BLOCK, GLIDE, CHARGE_ATTACK, WALL_GRAB }
 
 # Health
 signal update_health(increment : float)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cxdkwbc6ad5ii"]
+[gd_scene load_steps=11 format=3 uid="uid://cxdkwbc6ad5ii"]
 
 [ext_resource type="Script" uid="uid://b077h8dp0p8he" path="res://card_menu.gd" id="1_ed1gj"]
 [ext_resource type="PackedScene" uid="uid://bg4i1us4b8e8y" path="res://skill_card.tscn" id="2_lhlef"]
@@ -18,7 +18,7 @@ region = Rect2(0.9800606, 1.0036826, 19.104103, 27.14794)
 [sub_resource type="AtlasTexture" id="AtlasTexture_h4xtq"]
 resource_local_to_scene = true
 atlas = ExtResource("4_yqe6s")
-region = Rect2(169.05206, 1.0036826, 19.06665, 27.14794)
+region = Rect2(105.99845, 1.0036826, 19.025093, 27.14794)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_niub3"]
 resource_local_to_scene = true
@@ -28,7 +28,12 @@ region = Rect2(42.976425, 1.0058107, 19.021988, 27.001106)
 [sub_resource type="AtlasTexture" id="AtlasTexture_7c3oq"]
 resource_local_to_scene = true
 atlas = ExtResource("4_yqe6s")
-region = Rect2(168.94075, 1.0036826, 19.015396, 27.016655)
+region = Rect2(84.92659, 1.0036826, 19.080467, 27.016655)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqe6s"]
+resource_local_to_scene = true
+atlas = ExtResource("4_yqe6s")
+region = Rect2(63.984512, 1.0036826, 19.051735, 27.14794)
 
 [node name="CardMenu" type="PanelContainer"]
 anchors_preset = 8
@@ -102,6 +107,12 @@ layout_mode = 2
 texture = SubResource("AtlasTexture_7c3oq")
 skill = 4
 Name = "Charge Attack"
+
+[node name="SkillCard6" parent="MarginContainer/VBoxContainer/MarginContainer/CardGrid" instance=ExtResource("2_lhlef")]
+layout_mode = 2
+texture = SubResource("AtlasTexture_yqe6s")
+skill = 5
+Name = "Wall Grab"
 
 [node name="CloseButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
