@@ -10,6 +10,8 @@
 texture = ExtResource("2_d5x1h")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0, -8, -0.03914261)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.019571304, -8, 8, -8, 8, 8, -0.040102005, 8)
 
 [sub_resource type="TileSet" id="TileSet_0f027"]
 physics_layer_0/collision_layer = 1
@@ -20,7 +22,7 @@ sources/2 = SubResource("TileSetAtlasSource_8mm7a")
 [node name="Game" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_0f027")]
-position = Vector2(1, 0)
+position = Vector2(-183, -9)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-1, -10)
@@ -29,7 +31,7 @@ zoom = Vector2(4, 4)
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_0f027")
 format = 2
-layer_0/tile_data = PackedInt32Array(131069, 2, 0, 131070, 2, 0, 131071, 2, 0, 65536, 2, 0, 65537, 2, 0, 65538, 2, 0, 65539, 2, 0, 65540, 2, 0, 131068, 2, 0, 131067, 2, 0, 131066, 2, 0, 131065, 2, 0, 131064, 2, 0, 131063, 2, 0, 131062, 2, 0, 65541, 2, 0, 65542, 2, 0, 65543, 2, 0, 65544, 2, 0, 65545, 2, 0, 65546, 2, 0, 65547, 2, 0, 65548, 2, 0, 65549, 2, 0, 65550, 2, 0, 65551, 2, 0, 65552, 2, 0, 65553, 2, 0, 65554, 2, 0, 65555, 2, 0, 65556, 2, 0, 65557, 2, 0, -131059, 2, 0, -131058, 2, 0, -131057, 2, 0, -131056, 2, 0, -131055, 2, 0, -131054, 2, 0, -131053, 2, 0, -131052, 2, 0, -131051, 2, 0, -131050, 2, 0)
+layer_0/tile_data = PackedInt32Array(131064, 2, 0, 131065, 2, 0, 131066, 2, 0, 131067, 2, 0, 131068, 2, 0, 131069, 2, 0, 131070, 2, 0, 131071, 2, 0, 65536, 2, 0, 65537, 2, 0, 65538, 2, 0, 65539, 2, 0, 65540, 2, 0, 65541, 2, 0, 65542, 2, 0, 65543, 2, 0, 65544, 2, 0, -196599, 2, 1, -196598, 2, 0, -196597, 2, 0, -196596, 2, 0, -196595, 2, 0, -196594, 2, 0, -196593, 2, 0, -196592, 2, 0, -196591, 2, 0, -196590, 2, 0, -196589, 2, 0, -196588, 2, 0, -196587, 2, 0, -196586, 2, 0, -196585, 2, 0, -196584, 2, 0, 9, 2, 1, -65527, 2, 1, -131063, 2, 1, 65545, 2, 0, 131063, 2, 0, 131062, 2, 0, 131061, 2, 0, 131060, 2, 0, 131059, 2, 0, 131058, 2, 1, 65522, 2, 1, -14, 2, 1, -65550, 2, 1, -131086, 2, 1, -196622, 2, 1, -262158, 2, 1, -327694, 2, 1, -393230, 2, 1, -458766, 2, 1, -196583, 2, 0, -196582, 2, 0, -196581, 2, 0, -196580, 2, 0, -196579, 2, 0, -196578, 2, 0, -196577, 2, 0, -196576, 2, 0, -196575, 2, 0, -196574, 2, 0, -196573, 2, 0, -196572, 2, 0, -196571, 2, 0, -196570, 2, 0, -196569, 2, 0, -196568, 2, 0, -196567, 2, 0, -196558, 2, 0, -196557, 2, 0, -196556, 2, 0, -196555, 2, 0, -196554, 2, 0, -196553, 2, 0, -196552, 2, 0, -196551, 2, 0, -196559, 2, 0, -262087, 2, 1, -327623, 2, 1, -393159, 2, 1, -458695, 2, 1, -458694, 2, 0, -458693, 2, 0, -458692, 2, 0, -458691, 2, 0, -458690, 2, 0, -524226, 2, 1, -589762, 2, 1, -655298, 2, 1, -720834, 2, 1, -786370, 2, 1, -851906, 2, 1, -917442, 2, 1, -982978, 2, 1, -1048514, 2, 1, -1114050, 2, 1, -1179586, 2, 1, -1245122, 2, 1, -786397, 2, 0, -786396, 2, 0, -786395, 2, 0, -786394, 2, 0, -786393, 2, 0, -786392, 2, 0, -786391, 2, 0, -786383, 2, 0, -786382, 2, 0, -786381, 2, 0, -786380, 2, 0, -786379, 2, 0, -786378, 2, 0, -786377, 2, 0, -1114081, 2, 0, -1114080, 2, 0, -1114079, 2, 0, -1114078, 2, 0, -1441765, 2, 0, -1441764, 2, 0, -1441763, 2, 0, -1638401, 2, 1, -1572865, 2, 1, -1507329, 2, 1, -1441793, 2, 1, -1376257, 2, 1, -1310721, 2, 1, -1245185, 2, 1, -1703920, 2, 1, -1638384, 2, 1, -1572848, 2, 1, -1507312, 2, 1, -1441776, 2, 1, -1376240, 2, 1, -1310704, 2, 0, -1703948, 2, 0, -1703947, 2, 0, -1703946, 2, 0, -1703945, 2, 0, -1703944, 2, 0, -1703943, 2, 0, -1703942, 2, 0, -1703941, 2, 0, -1703940, 2, 0, -1703939, 2, 0, -1703938, 2, 0, -1703937, 2, 0, -1310720, 2, 0, -1310719, 2, 0, -1310718, 2, 0, -1310717, 2, 0, -1310716, 2, 0, -1310715, 2, 0, -1310714, 2, 0, -1310713, 2, 0, -1310712, 2, 0, -1310711, 2, 0, -1310710, 2, 0, -1310709, 2, 0, -1310708, 2, 0, -1310707, 2, 0, -1310706, 2, 0, -1310705, 2, 0, -1769456, 2, 1, -1769455, 2, 0, -1769454, 2, 0, -1769453, 2, 0, -1769452, 2, 0, -1769451, 2, 0, -1769450, 2, 0, -1769449, 2, 0, -1769448, 2, 0, -1769447, 2, 0)
 
 [node name="World Boundary" type="StaticBody2D" parent="."]
 position = Vector2(0, 72)
@@ -37,47 +39,85 @@ position = Vector2(0, 72)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World Boundary"]
 shape = SubResource("WorldBoundaryShape2D_2c62f")
 
-[node name="Hello" type="Label" parent="."]
-offset_left = -127.0
-offset_top = -51.0
-offset_right = -39.0
-offset_bottom = -28.0
-theme_override_fonts/font = ExtResource("2_2c62f")
-theme_override_font_sizes/font_size = 32
-text = "Hello :D"
-
-[node name="This is a game" type="Label" parent="."]
-offset_left = 150.0
-offset_top = -142.0
-offset_right = 530.0
-offset_bottom = -119.0
-theme_override_fonts/font = ExtResource("2_2c62f")
-theme_override_font_sizes/font_size = 32
-text = "This is a game about collecting."
-
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Control" parent="UI" instance=ExtResource("3_gyfs4")]
 
 [node name="pickup1" parent="." instance=ExtResource("5_8mm7a")]
-position = Vector2(233, -39)
+position = Vector2(219, 74.99999)
 
 [node name="pickup2" parent="." instance=ExtResource("5_8mm7a")]
-position = Vector2(338, 9)
+position = Vector2(131, -340)
 skill = 1
 
 [node name="pickup3" parent="." instance=ExtResource("5_8mm7a")]
-position = Vector2(352, -39)
+position = Vector2(265, 74.99999)
 skill = 2
 
 [node name="pickup4" parent="." instance=ExtResource("5_8mm7a")]
-position = Vector2(284, -109)
+position = Vector2(292, 76.999985)
 skill = 3
 
 [node name="pickup5" parent="." instance=ExtResource("5_8mm7a")]
-position = Vector2(-153, 8)
+position = Vector2(323.99997, 72.99999)
 skill = 4
 
 [node name="pickup6" parent="." instance=ExtResource("5_8mm7a")]
-position = Vector2(5.9999995, -117.99999)
+position = Vector2(354.99997, 72.99999)
 skill = 5
+
+[node name="Text Nodes" type="Node2D" parent="."]
+
+[node name="Welcome" type="Label" parent="Text Nodes"]
+offset_left = -160.0
+offset_top = -54.0
+offset_right = -78.0
+offset_bottom = -29.0
+theme_override_fonts/font = ExtResource("2_2c62f")
+theme_override_font_sizes/font_size = 16
+text = "Welcome to
+The Collector!"
+horizontal_alignment = 1
+
+[node name="Jump" type="Label" parent="Text Nodes"]
+offset_left = -12.0
+offset_top = -41.0
+offset_right = 138.0
+offset_bottom = -30.0
+theme_override_fonts/font = ExtResource("2_2c62f")
+text = "Press Space/RB to Jump."
+horizontal_alignment = 1
+
+[node name="Game Explanation" type="Label" parent="Text Nodes"]
+offset_left = 262.0
+offset_top = -120.0
+offset_right = 642.0
+offset_bottom = -95.0
+theme_override_fonts/font = ExtResource("2_2c62f")
+theme_override_font_sizes/font_size = 16
+text = "This is a game about collecting skills.
+Skills are represented by cards that you can equip."
+horizontal_alignment = 1
+
+[node name="Inventory" type="Label" parent="Text Nodes"]
+offset_left = 635.0
+offset_top = -295.0
+offset_right = 970.0
+offset_bottom = -270.0
+theme_override_fonts/font = ExtResource("2_2c62f")
+theme_override_font_sizes/font_size = 16
+text = "Open you inventory with Tab/Back.
+You can pick up skills and equip them in your card slot."
+horizontal_alignment = 1
+
+[node name="Double Jump" type="Label" parent="Text Nodes"]
+offset_left = 46.0
+offset_top = -415.0
+offset_right = 200.0
+offset_bottom = -376.0
+theme_override_fonts/font = ExtResource("2_2c62f")
+theme_override_font_sizes/font_size = 16
+text = "You can now double jump:
+- Open your inventory
+- Equip your new skill"
+horizontal_alignment = 1
