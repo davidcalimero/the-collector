@@ -1,10 +1,5 @@
 class_name Player extends CharacterBody2D
 
-const DOUBLE_JUMP_CARD_SKILL = "double_jump"
-const DASH_CARD_SKILL = "dash"
-const WALL_GRAB_CARD_SKILL = "wall_grab"
-const GLIDE_CARD_SKILL = "glide"
-
 const SPEED = 150.0
 const JUMP_VELOCITY = -400.0
 const DASH_VELOCITY = 900.0
@@ -26,18 +21,19 @@ var wall_jump_timer : Timer
 var current_animation
 
 @onready var animated_sprite = $AnimatedSprite2D
+@export var equipment : Node2D
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		var is_glide_button_pressed = Input.is_action_pressed("glide")
 		velocity += get_gravity() * delta
-		if is_glide_button_pressed and velocity.y > 0 and has_card_skill_equipped(GLIDE_CARD_SKILL) and animated_sprite.animation != "wall_grab":
+		if is_glide_button_pressed and velocity.y > 0 and equipment.has_card_skill_equipped(GlobalSignals.SkillType.GLIDE) and animated_sprite.animation != "wall_grab":
 			velocity.y = move_toward(velocity.y, GLIDE_MAX_FALL_SPEED, 30)
 			animated_sprite.animation = "glide"
-		elif is_on_wall() and velocity.y > 0:
+		elif is_on_wall() and velocity.y > 0  and equipment.has_card_skill_equipped(GlobalSignals.SkillType.WALL_GRAB):
 			velocity.y = move_toward(velocity.y, WALL_JUMP_MAX_FALL_SPEED, 30)
-		elif not is_on_wall():
+		else:
 			animated_sprite.animation = "jump" if velocity.y <= 0.0 else "fall"
 	elif is_on_floor() and double_jumped:
 		double_jumped = false
@@ -57,12 +53,12 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	if is_on_wall_only():
+	if is_on_wall_only() and equipment.has_card_skill_equipped(GlobalSignals.SkillType.WALL_GRAB):
 		# Verify if asset needs to be flipped
 		animated_sprite.animation = "wall_grab"
 		animated_sprite.flip_h = get_last_slide_collision().get_normal().x < 0.0
 	else:
-		if  not can_use_dash and abs(velocity.x) > SPEED:
+		if not can_use_dash and abs(velocity.x) > SPEED:
 			animated_sprite.animation = "dash"
 		elif is_on_floor():
 			if direction:
@@ -83,12 +79,12 @@ func verify_jump() -> void:
 		velocity.y = JUMP_VELOCITY
 	
 func verify_double_jump() -> void:
-	if Input.is_action_just_pressed("jump") and animated_sprite.animation != "wall_grab" and not is_on_floor() and has_card_skill_equipped(DOUBLE_JUMP_CARD_SKILL) and not double_jumped:
+	if Input.is_action_just_pressed("jump") and animated_sprite.animation != "wall_grab" and not is_on_floor() and equipment.has_card_skill_equipped(GlobalSignals.SkillType.DOUBLE_JUMP) and not double_jumped:
 		velocity.y = JUMP_VELOCITY
 		double_jumped = true;
 	
 func verify_dash() -> void:
-	if Input.is_action_just_pressed("dash") and has_card_skill_equipped(DASH_CARD_SKILL) and can_use_dash:
+	if Input.is_action_just_pressed("dash") and equipment.has_card_skill_equipped(GlobalSignals.SkillType.DASH) and can_use_dash:
 		var direction = -1 if $"AnimatedSprite2D".flip_h else 1
 		velocity.x = direction * DASH_VELOCITY
 		can_use_dash = false
@@ -102,7 +98,7 @@ func verify_dash() -> void:
 		dash_timer.start()
 	
 func verify_wall_jump() -> void:
-	if Input.is_action_just_pressed("jump") and animated_sprite.animation == "wall_grab" and has_card_skill_equipped(WALL_GRAB_CARD_SKILL):
+	if Input.is_action_just_pressed("jump") and animated_sprite.animation == "wall_grab" and equipment.has_card_skill_equipped(GlobalSignals.SkillType.WALL_GRAB):
 		var direction = -1 if $"AnimatedSprite2D".flip_h else 1
 		velocity.y = JUMP_VELOCITY * WALL_JUMP_Y_MULTIPLIER
 		velocity.x = direction * WALL_JUMP_X_VELOCITY
@@ -121,6 +117,3 @@ func _on_wall_jump_timer_timeout() -> void:
 	
 func _on_dash_timer_timeout() -> void:
 	can_use_dash = true
-	
-func has_card_skill_equipped(skill_card_name: String) -> bool:
-	return true

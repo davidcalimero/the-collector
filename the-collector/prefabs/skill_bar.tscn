@@ -3,17 +3,17 @@
 [ext_resource type="PackedScene" uid="uid://mdkjk711fh2j" path="res://prefabs/skill_slot.tscn" id="2_0ln37"]
 [ext_resource type="Texture2D" uid="uid://cdtu266pjoum6" path="res://assets/Sprites/Cards/cards_spreadsheet.png" id="3_y0yaa"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0ln37"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lm2yd"]
 resource_local_to_scene = true
 atlas = ExtResource("3_y0yaa")
 region = Rect2(169.03299, 1.0109737, 19.044998, 27.045473)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y0yaa"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5rwp"]
 resource_local_to_scene = true
 atlas = ExtResource("3_y0yaa")
 region = Rect2(169.03299, 1.0109737, 19.044998, 27.045473)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3xypw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2m1mc"]
 resource_local_to_scene = true
 atlas = ExtResource("3_y0yaa")
 region = Rect2(169.03299, 1.0109737, 19.044998, 27.045473)
@@ -26,16 +26,16 @@ offset_bottom = 80.0
 layout_mode = 2
 focus_neighbor_left = NodePath("../SkillSlot3")
 focus_neighbor_right = NodePath("../SkillSlot2")
-texture = SubResource("AtlasTexture_0ln37")
+texture = SubResource("AtlasTexture_lm2yd")
 
 [node name="SkillSlot2" parent="." instance=ExtResource("2_0ln37")]
 layout_mode = 2
 focus_neighbor_left = NodePath("../SkillSlot1")
 focus_neighbor_right = NodePath("../SkillSlot3")
-texture = SubResource("AtlasTexture_y0yaa")
+texture = SubResource("AtlasTexture_j5rwp")
 
 [node name="SkillSlot3" parent="." instance=ExtResource("2_0ln37")]
 layout_mode = 2
 focus_neighbor_left = NodePath("../SkillSlot2")
 focus_neighbor_right = NodePath("../SkillSlot1")
-texture = SubResource("AtlasTexture_3xypw")
+texture = SubResource("AtlasTexture_2m1mc")

@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://bja3lk3s3c70f" path="res://assets/fonts/ByteBounce.ttf" id="2_2c62f"]
 [ext_resource type="Texture2D" uid="uid://b6lmbedjq5faf" path="res://assets/Sprites/Environment/spritesheetBlocks.png" id="2_d5x1h"]
 [ext_resource type="PackedScene" uid="uid://biqlyqgxc8i6f" path="res://scenes/ingame_ui.tscn" id="3_gyfs4"]
-[ext_resource type="Script" uid="uid://b5ihvjvh6o7tv" path="res://scenes/killzone.gd" id="3_rt2n2"]
+[ext_resource type="Script" uid="uid://b5ihvjvh6o7tv" path="res://scripts/killzone.gd" id="3_rt2n2"]
 [ext_resource type="PackedScene" uid="uid://6o4vmflhrj77" path="res://prefabs/skill_pickup.tscn" id="5_8mm7a"]
 [ext_resource type="PackedScene" uid="uid://ctcmx7e4rwyff" path="res://prefabs/final_card.tscn" id="6_c16ls"]
 
@@ -236,27 +236,27 @@ horizontal_alignment = 1
 
 [node name="pickup1" parent="Pickups" instance=ExtResource("5_8mm7a")]
 position = Vector2(1264, -290)
-skill = 0
+skill = 1
 
 [node name="pickup2" parent="Pickups" instance=ExtResource("5_8mm7a")]
 position = Vector2(149, -422)
-skill = 1
+skill = 2
 
 [node name="pickup3" parent="Pickups" instance=ExtResource("5_8mm7a")]
 position = Vector2(-333, 425)
-skill = 2
+skill = 3
 
 [node name="pickup4" parent="Pickups" instance=ExtResource("5_8mm7a")]
 position = Vector2(-804, -825)
-skill = 3
+skill = 4
 
 [node name="pickup5" parent="Pickups" instance=ExtResource("5_8mm7a")]
 position = Vector2(-274.00003, 423)
-skill = 4
+skill = 5
 
 [node name="pickup6" parent="Pickups" instance=ExtResource("5_8mm7a")]
 position = Vector2(-2769, -182)
-skill = 5
+skill = 6
 
 [node name="final_card" parent="Pickups" node_paths=PackedStringArray("player") instance=ExtResource("6_c16ls")]
 position = Vector2(-3099, -532)

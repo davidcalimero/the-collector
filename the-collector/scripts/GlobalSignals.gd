@@ -1,6 +1,6 @@
 extends Node
 
-enum SkillType { DASH, DOUBLE_JUMP, BLOCK, GLIDE, CHARGE_ATTACK, WALL_GRAB }
+enum SkillType { INVALID, DASH, DOUBLE_JUMP, BLOCK, GLIDE, CHARGE_ATTACK, WALL_GRAB }
 
 # Health
 signal update_health(increment : float)
@@ -10,8 +10,6 @@ signal reset_health
 signal equip_skill(skill : SkillType)
 signal unequip_skill(skill : SkillType)
 signal learn_skill(skill : SkillType)
-
-
 
 #Skills Mananger
 var learned_skills: Array = []
@@ -47,3 +45,7 @@ func get_equipped_skills() -> Array:
 
 func get_learned_skills() -> Array:
 	return learned_skills.duplicate()
+
+func refresh_skills() -> void:
+	learned_skills.clear()
+	equipped_skills.clear()
