@@ -7,6 +7,9 @@ func _ready():
 	stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	focus_mode = Control.FOCUS_ALL
 	_refresh_visual()
+	# Toggle ring on focus
+	focus_entered.connect(func(): $FocusFrame.visible = true)
+	focus_exited.connect(func(): $FocusFrame.visible = false)
 
 func _refresh_visual():
 	if skill_icon:
