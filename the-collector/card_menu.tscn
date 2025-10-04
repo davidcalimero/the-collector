@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cxdkwbc6ad5ii"]
+[gd_scene load_steps=4 format=3 uid="uid://cxdkwbc6ad5ii"]
 
 [ext_resource type="Script" uid="uid://b077h8dp0p8he" path="res://card_menu.gd" id="1_ed1gj"]
 [ext_resource type="PackedScene" uid="uid://bg4i1us4b8e8y" path="res://skill_card.tscn" id="2_lhlef"]
+[ext_resource type="FontFile" uid="uid://bja3lk3s3c70f" path="res://assets/fonts/ByteBounce.ttf" id="2_yqe6s"]
 
 [node name="CardMenu" type="PanelContainer"]
 anchors_preset = 8
@@ -29,9 +30,11 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Skills"
+theme_override_fonts/font = ExtResource("2_yqe6s")
+theme_override_font_sizes/font_size = 40
+text = "Skill Cards"
 horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
@@ -41,38 +44,40 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+[node name="CardGrid" type="GridContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 columns = 3
 
-[node name="SkillCard1" parent="MarginContainer/VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("2_lhlef")]
+[node name="SkillCard1" parent="MarginContainer/VBoxContainer/MarginContainer/CardGrid" instance=ExtResource("2_lhlef")]
 layout_mode = 2
-skill_id = ""
+skill_id = "dash"
+unlocked = true
+
+[node name="SkillCard2" parent="MarginContainer/VBoxContainer/MarginContainer/CardGrid" instance=ExtResource("2_lhlef")]
+layout_mode = 2
+skill_id = "double_jump"
+unlocked = true
+
+[node name="SkillCard3" parent="MarginContainer/VBoxContainer/MarginContainer/CardGrid" instance=ExtResource("2_lhlef")]
+layout_mode = 2
+skill_id = "block"
 unlocked = false
 
-[node name="SkillCard2" parent="MarginContainer/VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("2_lhlef")]
+[node name="SkillCard4" parent="MarginContainer/VBoxContainer/MarginContainer/CardGrid" instance=ExtResource("2_lhlef")]
 layout_mode = 2
-skill_id = ""
+skill_id = "glide"
 unlocked = false
 
-[node name="SkillCard3" parent="MarginContainer/VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("2_lhlef")]
+[node name="SkillCard5" parent="MarginContainer/VBoxContainer/MarginContainer/CardGrid" instance=ExtResource("2_lhlef")]
 layout_mode = 2
-skill_id = ""
+skill_id = "charge_attack"
 unlocked = false
 
-[node name="SkillCard4" parent="MarginContainer/VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("2_lhlef")]
+[node name="CloseButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-skill_id = ""
-unlocked = false
-
-[node name="SkillCard5" parent="MarginContainer/VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("2_lhlef")]
-layout_mode = 2
-skill_id = ""
-unlocked = false
-
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yqe6s")
+theme_override_font_sizes/font_size = 25
 text = "Close
 "
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_close_menu"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CloseButton" to="." method="_close_menu"]
