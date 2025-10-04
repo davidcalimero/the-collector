@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://cxdkwbc6ad5ii"]
 
-[ext_resource type="Script" uid="uid://b077h8dp0p8he" path="res://card_menu.gd" id="1_ed1gj"]
-[ext_resource type="PackedScene" uid="uid://bg4i1us4b8e8y" path="res://skill_card.tscn" id="2_lhlef"]
+[ext_resource type="Script" uid="uid://t42th5wlu726" path="res://scripts/card_menu.gd" id="1_ed1gj"]
+[ext_resource type="PackedScene" uid="uid://bcofhcwjbja76" path="res://prefabs/skill_card.tscn" id="2_lhlef"]
 [ext_resource type="FontFile" uid="uid://bja3lk3s3c70f" path="res://assets/fonts/ByteBounce.ttf" id="2_yqe6s"]
 [ext_resource type="Texture2D" uid="uid://cdtu266pjoum6" path="res://assets/Sprites/Cards/cards_spreadsheet.png" id="4_yqe6s"]
 
