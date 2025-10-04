@@ -24,7 +24,7 @@ sources/2 = SubResource("TileSetAtlasSource_8mm7a")
 [node name="Game" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_0f027")]
-position = Vector2(-465, -10)
+position = Vector2(-3209, -514)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-1, -10)
@@ -258,9 +258,10 @@ skill = 4
 position = Vector2(-2769, -182)
 skill = 5
 
-[node name="final_card" parent="Pickups" instance=ExtResource("6_c16ls")]
+[node name="final_card" parent="Pickups" node_paths=PackedStringArray("player") instance=ExtResource("6_c16ls")]
 position = Vector2(-3099, -532)
-next_scene = ""
+player = NodePath("../../Player")
+next_scene = "res://scenes//start_menu.tscn"
 
 [node name="Killzone" type="Area2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("3_rt2n2")
