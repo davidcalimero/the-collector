@@ -1,10 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://l51rcv6nsgt0"]
+[gd_scene load_steps=8 format=3 uid="uid://l51rcv6nsgt0"]
 
-[ext_resource type="PackedScene" path="res://player.tscn" id="1_0f027"]
+[ext_resource type="PackedScene" uid="uid://bfyaoxkswd1w2" path="res://player.tscn" id="1_0f027"]
 [ext_resource type="FontFile" uid="uid://bja3lk3s3c70f" path="res://assets/fonts/ByteBounce.ttf" id="2_2c62f"]
+[ext_resource type="Texture2D" uid="uid://b6lmbedjq5faf" path="res://assets/Sprites/Environment/spritesheetBlocks.png" id="2_d5x1h"]
 [ext_resource type="PackedScene" uid="uid://bdh62eraerv7u" path="res://ingame_ui.tscn" id="3_gyfs4"]
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8mm7a"]
+texture = ExtResource("2_d5x1h")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0, -8, -0.03914261)
+
 [sub_resource type="TileSet" id="TileSet_0f027"]
+physics_layer_0/collision_layer = 1
+sources/2 = SubResource("TileSetAtlasSource_8mm7a")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_2c62f"]
 
@@ -20,9 +28,10 @@ zoom = Vector2(4, 4)
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_0f027")
 format = 2
+layer_0/tile_data = PackedInt32Array(131069, 2, 0, 131070, 2, 0, 131071, 2, 0, 65536, 2, 0, 65537, 2, 0, 65538, 2, 0, 65539, 2, 0, 65540, 2, 0, 131068, 2, 0, 131067, 2, 0, 131066, 2, 0, 131065, 2, 0, 131064, 2, 0, 131063, 2, 0, 131062, 2, 0, 65541, 2, 0, 65542, 2, 0, 65543, 2, 0, 65544, 2, 0, 65545, 2, 0, 65546, 2, 0, 65547, 2, 0, 65548, 2, 0, 65549, 2, 0, 65550, 2, 0, 65551, 2, 0, 65552, 2, 0, 65553, 2, 0, 65554, 2, 0, 65555, 2, 0, 65556, 2, 0, 65557, 2, 0, -131059, 2, 0, -131058, 2, 0, -131057, 2, 0, -131056, 2, 0, -131055, 2, 0, -131054, 2, 0, -131053, 2, 0, -131052, 2, 0, -131051, 2, 0, -131050, 2, 0)
 
 [node name="World Boundary" type="StaticBody2D" parent="."]
-position = Vector2(0, 16.445)
+position = Vector2(0, 72)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World Boundary"]
 shape = SubResource("WorldBoundaryShape2D_2c62f")
@@ -37,10 +46,10 @@ theme_override_font_sizes/font_size = 32
 text = "Hello :D"
 
 [node name="This is a game" type="Label" parent="."]
-offset_left = 226.0
-offset_top = -57.0
-offset_right = 606.0
-offset_bottom = -34.0
+offset_left = 150.0
+offset_top = -142.0
+offset_right = 530.0
+offset_bottom = -119.0
 theme_override_fonts/font = ExtResource("2_2c62f")
 theme_override_font_sizes/font_size = 32
 text = "This is a game about collecting."
@@ -48,3 +57,4 @@ text = "This is a game about collecting."
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Control" parent="UI" instance=ExtResource("3_gyfs4")]
+anchors_preset = 15
