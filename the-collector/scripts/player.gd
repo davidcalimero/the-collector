@@ -23,6 +23,9 @@ var current_animation
 @onready var animated_sprite = $AnimatedSprite2D
 @export var equipment : Node2D
 
+func _ready():
+	GlobalSignals.set_checkpoint(global_position)
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():

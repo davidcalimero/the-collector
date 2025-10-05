@@ -19,5 +19,8 @@ func _on_body_entered(body: Node2D) -> void:
 		
 func _on_game_over() -> void:
 	Engine.time_scale = 1.0
-	get_tree().reload_current_scene()	
-	GlobalSignals.refresh_skills()
+	if die_timer:
+		die_timer.stop()
+		die_timer = null
+	player.global_position = GlobalSignals.last_checkpoint
+	#GlobalSignals.refresh_skills()

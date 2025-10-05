@@ -15,6 +15,9 @@ signal learn_skill(skill : SkillType)
 var learned_skills: Array = []
 var equipped_skills: Array = []
 
+#Checkpoint
+var last_checkpoint: Vector2
+
 func _ready():
 	GlobalSignals.learn_skill.connect(_on_learn_skill)
 	GlobalSignals.equip_skill.connect(_on_equip_skill)
@@ -49,3 +52,6 @@ func get_learned_skills() -> Array:
 func refresh_skills() -> void:
 	learned_skills.clear()
 	equipped_skills.clear()
+	
+func set_checkpoint(pos: Vector2) -> void:
+	last_checkpoint = pos
