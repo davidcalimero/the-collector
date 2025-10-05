@@ -1,8 +1,35 @@
 <!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <title>Wrapper</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000; /* matches letterbox */
+    }
+    #game {
+      border: 0;
+      display: block;
+      /* no fixed width/height here; we set them via JS */
+    }
+  </style>
 </head>
 <body>
-  <iframe src="the-collector/build/index.html"></iframe>
+  <iframe id="game" src="the-collector/build/index.html" allow="fullscreen"></iframe>
+  <script>
+    const iframe = document.getElementById('game');
+    function sizeIframe() {
+      iframe.style.width  = window.innerWidth + 'px';
+      iframe.style.height = window.innerHeight + 'px';
+    }
+    sizeIframe();
+    window.addEventListener('resize', sizeIframe);
+    new ResizeObserver(sizeIframe).observe(document.body);
+  </script>
 </body>
 </html>
