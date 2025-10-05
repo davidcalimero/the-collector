@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cm1los2xdw864"]
+[gd_scene load_steps=5 format=3 uid="uid://cm1los2xdw864"]
 
 [ext_resource type="Script" uid="uid://co4r6w5yn5rrj" path="res://scripts/projectile.gd" id="1_s5n0i"]
-[ext_resource type="Texture2D" uid="uid://d3tkpnkwc1crq" path="res://assets/Sprites/Environment/Block16x16.png" id="2_how8d"]
+[ext_resource type="Texture2D" uid="uid://cryb3nvgkjroi" path="res://assets/Sprites/Enemies/enemy1.png" id="2_how8d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjgtm"]
+atlas = ExtResource("2_how8d")
+region = Rect2(410.37225, 36.778633, 11.02652, 11.026543)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xjgtm"]
 radius = 4.0
@@ -11,9 +15,10 @@ collision_mask = 3
 script = ExtResource("1_s5n0i")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.23529412, 0.7176471, 0.4392157, 1)
 position = Vector2(4.7683716e-07, 4.7683716e-07)
-scale = Vector2(0.4375, 0.4375)
-texture = ExtResource("2_how8d")
+scale = Vector2(0.678, 0.678)
+texture = SubResource("AtlasTexture_xjgtm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_xjgtm")

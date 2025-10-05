@@ -265,6 +265,7 @@ radius = 51.009804
 radius = 138.00362
 
 [node name="BossSlime" type="CharacterBody2D"]
+modulate = Color(0, 0.8847416, 0.53837955, 1)
 z_index = 1
 collision_layer = 2
 script = ExtResource("1_av27i")
