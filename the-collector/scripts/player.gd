@@ -54,9 +54,9 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_pressed("glide") and velocity.y > 0 and equipment.has_card_skill_equipped(GlobalSignals.SkillType.GLIDE) and animated_sprite.animation != "wall_grab":
 			velocity.y = move_toward(velocity.y, GLIDE_MAX_FALL_SPEED, 30)
 			animated_sprite.animation = "glide"
-		elif is_on_wall() and velocity.y > 0  and equipment.has_card_skill_equipped(GlobalSignals.SkillType.WALL_GRAB):
+		elif is_on_wall() and velocity.y > 0  and equipment.has_card_skill_equipped(GlobalSignals.SkillType.WALL_GRAB) and block_collision.disabled:
 			velocity.y = move_toward(velocity.y, WALL_JUMP_MAX_FALL_SPEED, 30)
-		else:
+		elif attack_collision.disabled:
 			animated_sprite.animation = "jump" if velocity.y <= 0.0 else "fall"
 	elif is_on_floor() and double_jumped:
 		double_jumped = false
