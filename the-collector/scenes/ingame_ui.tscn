@@ -15,10 +15,17 @@ grow_vertical = 2
 
 [node name="HealthBar" parent="." instance=ExtResource("1_vs8bb")]
 layout_mode = 1
-offset_left = 7.0
-offset_top = 7.0
-offset_right = 85.0
-offset_bottom = 17.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -117.0
+offset_top = -252.0
+offset_right = -39.0
+offset_bottom = -242.0
+grow_horizontal = 2
+grow_vertical = 0
 scale = Vector2(3, 3)
 
 [node name="SkillBar" parent="." instance=ExtResource("2_ffqsk")]

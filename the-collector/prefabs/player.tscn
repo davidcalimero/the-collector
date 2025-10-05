@@ -177,7 +177,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
-size = Vector2(19, 18.4)
+size = Vector2(15.555556, 18.4)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1txc5"]
 
@@ -190,10 +190,10 @@ equipment = NodePath("Equipment")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1jxqw")
-animation = &"revive"
+animation = &"wall_grab"
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 4.5)
+position = Vector2(-2.3841858e-07, 4.5)
 scale = Vector2(0.9, 1.25)
 shape = SubResource("RectangleShape2D_onrkg")
 
