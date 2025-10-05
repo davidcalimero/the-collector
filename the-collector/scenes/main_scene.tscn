@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://l51rcv6nsgt0"]
+[gd_scene load_steps=12 format=3 uid="uid://l51rcv6nsgt0"]
 
 [ext_resource type="PackedScene" uid="uid://bfyaoxkswd1w2" path="res://prefabs/player.tscn" id="1_0f027"]
 [ext_resource type="FontFile" uid="uid://bja3lk3s3c70f" path="res://assets/fonts/ByteBounce.ttf" id="2_2c62f"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://b5ihvjvh6o7tv" path="res://scripts/killzone.gd" id="3_rt2n2"]
 [ext_resource type="PackedScene" uid="uid://6o4vmflhrj77" path="res://prefabs/skill_pickup.tscn" id="5_8mm7a"]
 [ext_resource type="PackedScene" uid="uid://ctcmx7e4rwyff" path="res://prefabs/final_card.tscn" id="6_c16ls"]
+[ext_resource type="PackedScene" uid="uid://326wa65hryn2" path="res://prefabs/checkpoint.tscn" id="8_18nlu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8mm7a"]
 texture = ExtResource("2_d5x1h")
@@ -271,5 +272,13 @@ player = NodePath("../Player")
 position = Vector2(-866, 100)
 scale = Vector2(150, 5)
 shape = SubResource("WorldBoundaryShape2D_c16ls")
+
+[node name="Checkpoints" type="Node2D" parent="."]
+
+[node name="checkpoint" parent="Checkpoints" instance=ExtResource("8_18nlu")]
+position = Vector2(617, -48)
+
+[node name="checkpoint2" parent="Checkpoints" instance=ExtResource("8_18nlu")]
+position = Vector2(-1150, -800)
 
 [connection signal="body_entered" from="Killzone" to="Killzone" method="_on_body_entered"]

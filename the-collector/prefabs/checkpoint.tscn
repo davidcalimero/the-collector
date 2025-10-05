@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://326wa65hryn2"]
+
+[ext_resource type="Script" uid="uid://dwp6j2vkpismj" path="res://scripts/checkpoint.gd" id="1_jmy7n"]
+[ext_resource type="Texture2D" uid="uid://cpt7yby5l0uoy" path="res://icon.svg" id="2_els25"]
+[ext_resource type="FontFile" uid="uid://bja3lk3s3c70f" path="res://assets/fonts/ByteBounce.ttf" id="3_els25"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x5hua"]
+radius = 17.029387
+
+[node name="checkpoint" type="Area2D"]
+monitorable = false
+script = ExtResource("1_jmy7n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -6.9999995)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_els25")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -17)
+shape = SubResource("CircleShape2D_x5hua")
+
+[node name="Prompt" type="Label" parent="."]
+offset_left = -22.0
+offset_top = -48.0
+offset_right = 23.0
+offset_bottom = -36.0
+theme_override_fonts/font = ExtResource("3_els25")
+text = "Press E"
+horizontal_alignment = 1
+vertical_alignment = 1
