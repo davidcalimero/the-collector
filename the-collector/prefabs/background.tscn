@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://ddamgvtji1gdc"]
+[gd_scene load_steps=0 format=3 uid="uid://ddamgvtji1gdc"]
 
 [node name="Background" type="TileMap"]
 format = 2
