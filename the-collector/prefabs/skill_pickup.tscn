@@ -36,6 +36,7 @@ animations = [{
 radius = 8.0
 
 [node name="pickup" type="Area2D"]
+collision_mask = 3
 monitorable = false
 script = ExtResource("1_vs624")
 skill = null
