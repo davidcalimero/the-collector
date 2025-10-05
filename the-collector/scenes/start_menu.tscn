@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://duycsow7avkda"]
+[gd_scene load_steps=5 format=3 uid="uid://duycsow7avkda"]
 
+[ext_resource type="Texture2D" uid="uid://bhsvbbbp8yeuk" path="res://assets/Sprites/title_background.png" id="1_h61rw"]
 [ext_resource type="FontFile" uid="uid://bja3lk3s3c70f" path="res://assets/fonts/ByteBounce.ttf" id="1_ia0g5"]
 [ext_resource type="Script" uid="uid://uxeth7vy0soo" path="res://scripts/start_game_button.gd" id="1_jwbto"]
-[ext_resource type="Texture2D" uid="uid://bpjv8w4kk1ptm" path="res://assets/Sprites/title.png" id="1_m7x51"]
+[ext_resource type="Texture2D" uid="uid://c7hwvytjpke0a" path="res://assets/Sprites/title_text.png" id="4_fcv5n"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -12,10 +13,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Title" type="Sprite2D" parent="."]
-position = Vector2(1037, 462)
-scale = Vector2(4.351239, 3.3166206)
-texture = ExtResource("1_m7x51")
+[node name="TitleBackground" type="Sprite2D" parent="."]
+modulate = Color(0.70380783, 0.70380783, 0.70380783, 1)
+position = Vector2(990, 697.5)
+scale = Vector2(4.2024794, 2.3990536)
+texture = ExtResource("1_h61rw")
 
 [node name="StartButton" type="Button" parent="."]
 layout_mode = 1
@@ -36,5 +38,10 @@ theme_override_fonts/font = ExtResource("1_ia0g5")
 theme_override_font_sizes/font_size = 16
 text = "Start Game"
 script = ExtResource("1_jwbto")
+
+[node name="TitleText" type="Sprite2D" parent="."]
+position = Vector2(963, 482)
+scale = Vector2(3.568376, 3.568376)
+texture = ExtResource("4_fcv5n")
 
 [connection signal="pressed" from="StartButton" to="StartButton" method="_on_button_pressed"]
