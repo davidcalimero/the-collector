@@ -19,13 +19,6 @@ func _ready():
 	GlobalSignals.learn_skill.connect(_on_learn_skill)
 	GlobalSignals.equip_skill.connect(_on_equip_skill)
 	GlobalSignals.unequip_skill.connect(_on_unequip_skill)
-	
-	GlobalSignals.emit_signal("learn_skill", SkillType.DASH)
-	GlobalSignals.emit_signal("learn_skill", SkillType.DOUBLE_JUMP)
-	GlobalSignals.emit_signal("learn_skill", SkillType.BLOCK)
-	GlobalSignals.emit_signal("learn_skill", SkillType.GLIDE)
-	GlobalSignals.emit_signal("learn_skill", SkillType.CHARGE_ATTACK)
-	GlobalSignals.emit_signal("learn_skill", SkillType.WALL_GRAB)
 
 # === Signal handlers ===
 func _on_learn_skill(skill):
