@@ -8,19 +8,17 @@
     html, body {
       margin: 0; padding: 0;
       height: 100%;
-      background: #000;            /* match letterbox color */
+      background: #000;
       overflow: hidden;
     }
-    /* Fill the visual viewport (works well on mobile, too) */
     #game {
       position: fixed;
       inset: 0;
-      width: 100dvw;               /* dynamic viewport units */
+      width: 100dvw;
       height: 100dvh;
       border: 0;
       display: block;
     }
-    /* Fallback for browsers without dvh/dvw (optional) */
     @supports not (height: 100dvh) {
       #game { width: 100vw; height: 100vh; }
     }
