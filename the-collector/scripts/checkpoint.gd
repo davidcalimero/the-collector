@@ -35,8 +35,8 @@ func _on_body_exited(body: Node) -> void:
 func _activate_checkpoint() -> void:
 	GlobalSignals.set_checkpoint(global_position)
 	var t := create_tween()
-	t.tween_property($Sprite2D, "modulate", Color(1,1,1,0.4), 0.1)
-	t.tween_property($Sprite2D, "modulate", Color(1,1,1,1.0), 0.1)
+	t.tween_property($AnimatedSprite2D, "modulate", Color(1,1,1,0.4), 0.1)
+	t.tween_property($AnimatedSprite2D, "modulate", Color(1,1,1,1.0), 0.1)
 
 
 func _on_device_changed(device: String):
