@@ -16,5 +16,14 @@
 </head>
 <body>
   <iframe src="the-collector/build/index.html"></iframe>
+  <script>
+    const iframe = document.getElementById("game");
+    function resize() {
+      iframe.width  = window.innerWidth;
+      iframe.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resize);
+    resize();
+  </script>
 </body>
 </html>
