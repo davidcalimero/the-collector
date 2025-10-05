@@ -1,8 +1,37 @@
-[gd_scene load_steps=5 format=3 uid="uid://326wa65hryn2"]
+[gd_scene load_steps=9 format=3 uid="uid://326wa65hryn2"]
 
 [ext_resource type="Script" uid="uid://dwp6j2vkpismj" path="res://scripts/checkpoint.gd" id="1_jmy7n"]
-[ext_resource type="Texture2D" uid="uid://cpt7yby5l0uoy" path="res://icon.svg" id="2_els25"]
+[ext_resource type="Texture2D" uid="uid://hbvt8tyq7y88" path="res://assets/Sprites/Environment/checkpoint.png" id="2_els25"]
 [ext_resource type="FontFile" uid="uid://bja3lk3s3c70f" path="res://assets/fonts/ByteBounce.ttf" id="3_els25"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5h7x"]
+atlas = ExtResource("2_els25")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5no8"]
+atlas = ExtResource("2_els25")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bh4b2"]
+atlas = ExtResource("2_els25")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8h541"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5h7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5no8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bh4b2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x5hua"]
 radius = 14.0
@@ -12,13 +41,11 @@ collision_mask = 3
 monitorable = false
 script = ExtResource("1_jmy7n")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 7)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_els25")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 3.5)
+sprite_frames = SubResource("SpriteFrames_8h541")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_x5hua")
 
 [node name="Prompt" type="Label" parent="."]
