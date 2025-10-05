@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://b5ihvjvh6o7tv" path="res://scripts/killzone.gd" id="3_rt2n2"]
 [ext_resource type="PackedScene" uid="uid://6o4vmflhrj77" path="res://prefabs/skill_pickup.tscn" id="5_8mm7a"]
 [ext_resource type="PackedScene" uid="uid://ctcmx7e4rwyff" path="res://prefabs/final_card.tscn" id="6_c16ls"]
-[ext_resource type="PackedScene" uid="uid://326wa65hryn2" path="res://prefabs/checkpoint.tscn" id="8_18nlu"]
+[ext_resource type="PackedScene" path="res://prefabs/checkpoint.tscn" id="8_18nlu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c16ls"]
 texture = ExtResource("2_d5x1h")

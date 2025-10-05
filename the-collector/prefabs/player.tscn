@@ -149,14 +149,23 @@ animations = [{
 "texture": SubResource("AtlasTexture_kbsxf")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_kbsxf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbsxf")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_rgeog")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbsxf")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_opo22")
 }],
 "loop": false,
 "name": &"revive",
-"speed": 3.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
