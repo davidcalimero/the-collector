@@ -1,9 +1,33 @@
-[gd_scene load_steps=31 format=3 uid="uid://4di1f44vdlw6"]
+[gd_scene load_steps=37 format=3 uid="uid://4di1f44vdlw6"]
 
 [ext_resource type="Script" uid="uid://b36v23i4v0yra" path="res://scripts/slime_boss.gd" id="1_av27i"]
 [ext_resource type="PackedScene" uid="uid://cm1los2xdw864" path="res://prefabs/projectile.tscn" id="2_ked2q"]
 [ext_resource type="PackedScene" uid="uid://b4f0xs6c6mqmy" path="res://prefabs/enemy.tscn" id="3_yc0pt"]
 [ext_resource type="Texture2D" uid="uid://b4rvmy5yn67l2" path="res://assets/Sprites/Enemies/boss1.png" id="4_ked2q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ked2q"]
+atlas = ExtResource("4_ked2q")
+region = Rect2(1536, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6q7j6"]
+atlas = ExtResource("4_ked2q")
+region = Rect2(1408, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7tsa"]
+atlas = ExtResource("4_ked2q")
+region = Rect2(1664, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1ox6"]
+atlas = ExtResource("4_ked2q")
+region = Rect2(1792, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1422g"]
+atlas = ExtResource("4_ked2q")
+region = Rect2(1920, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oghej"]
+atlas = ExtResource("4_ked2q")
+region = Rect2(2048, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yc0pt"]
 atlas = ExtResource("4_ked2q")
@@ -91,6 +115,34 @@ region = Rect2(1408, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6q7j6"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ked2q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6q7j6")
+}],
+"loop": false,
+"name": &"damage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7tsa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1ox6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1422g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oghej")
+}],
+"loop": false,
+"name": &"die",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_yc0pt")
