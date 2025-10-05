@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var life: float = 200
+
 # -------- CONFIG GERAL --------
 @export var gravity: float = 2400.0
 @export var move_speed: float = 80.0   # só usado p/ desacelerar rápido ao parar
@@ -39,6 +41,7 @@ var _cycle_index: int = 0
 var _active: bool = false
 var _activated_once: bool = false
 var _can_move: bool = false
+var _dead : bool = false
 
 # (opcional) referência ao player para saltar “na direção”
 @export var player_path: NodePath
@@ -95,7 +98,7 @@ func _start_loop() -> void:
 	_run_cycle()
 
 func _run_cycle() -> void:
-	if not _active: return
+	if _dead or not _active: return
 	var kind: Attack = cycle_order[_cycle_index % cycle_order.size()]
 	_cycle_index += 1
 	match kind:
@@ -258,3 +261,16 @@ func _pick_jump_target_x() -> float:
 # -------- CONTROLO EXTERNO --------
 func set_active(on: bool) -> void:
 	_active = on
+	
+func take_damage(amount : float):
+	if _dead:
+		return
+	life -= amount
+	if life <= 0:
+		_dead = true
+		_anim.play("die")
+		await get_tree().create_timer(0.2).timeout
+		queue_free()
+	else:
+		_anim.play("damage")
+		

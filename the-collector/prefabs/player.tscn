@@ -255,9 +255,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(15.555556, 18.4)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ht1c8"]
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1txc5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ht1c8"]
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("equipment") groups=["Player"]]
 z_index = 3
@@ -278,6 +278,16 @@ shape = SubResource("RectangleShape2D_onrkg")
 [node name="Equipment" type="Node2D" parent="."]
 script = ExtResource("3_r66lb")
 
+[node name="AttackArea" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="Attack Collision" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(0, 6)
+rotation = 1.5707964
+scale = Vector2(0.5, 1.5)
+shape = SubResource("CapsuleShape2D_1txc5")
+disabled = true
+
 [node name="Block Collision" type="CollisionShape2D" parent="."]
 position = Vector2(4, 4)
 rotation = 1.5707964
@@ -285,12 +295,3 @@ scale = Vector2(1.2, 1)
 shape = SubResource("RectangleShape2D_ht1c8")
 disabled = true
 one_way_collision = true
-
-[node name="Attack" type="Area2D" parent="."]
-
-[node name="Attack Collision" type="CollisionShape2D" parent="Attack"]
-position = Vector2(0, 6)
-rotation = 1.5707964
-scale = Vector2(0.5, 1.5)
-shape = SubResource("CapsuleShape2D_1txc5")
-disabled = true
