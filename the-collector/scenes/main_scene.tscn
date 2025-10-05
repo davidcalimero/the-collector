@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://b5ihvjvh6o7tv" path="res://scripts/killzone.gd" id="3_rt2n2"]
 [ext_resource type="PackedScene" uid="uid://6o4vmflhrj77" path="res://prefabs/skill_pickup.tscn" id="5_8mm7a"]
 [ext_resource type="PackedScene" uid="uid://ctcmx7e4rwyff" path="res://prefabs/final_card.tscn" id="6_c16ls"]
-[ext_resource type="PackedScene" path="res://prefabs/checkpoint.tscn" id="8_18nlu"]
+[ext_resource type="PackedScene" uid="uid://326wa65hryn2" path="res://prefabs/checkpoint.tscn" id="8_18nlu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c16ls"]
 texture = ExtResource("2_d5x1h")
@@ -297,9 +297,9 @@ shape = SubResource("WorldBoundaryShape2D_c16ls")
 [node name="Checkpoints" type="Node2D" parent="."]
 
 [node name="checkpoint" parent="Checkpoints" instance=ExtResource("8_18nlu")]
-position = Vector2(617, -48)
+position = Vector2(617, -63)
 
 [node name="checkpoint2" parent="Checkpoints" instance=ExtResource("8_18nlu")]
-position = Vector2(-1150, -800)
+position = Vector2(-1149, -815)
 
 [connection signal="body_entered" from="Killzone" to="Killzone" method="_on_body_entered"]
