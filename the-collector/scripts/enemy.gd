@@ -76,7 +76,7 @@ func _physics_process(delta: float) -> void:
 	var xDestination : float
 	if animatedSprite.animation == "damaged":
 		pass
-	elif animatedSprite.animation == "attack":
+	elif animatedSprite.animation == "attack" and not inAttackCooldown:
 		xDirection = -1 if attackDirectedToLeft else 1
 		velocity.x = xDirection * ATTACK_SPEED
 	elif inAttackCooldown:
