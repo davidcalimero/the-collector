@@ -37,6 +37,11 @@ func _ready() -> void:
 	staticRallyPointAXPosition = rallyPointA.global_position.x
 	staticRallyPointBXPosition = rallyPointB.global_position.x
 	
+	if not playerNode:
+		var ps := get_tree().get_nodes_in_group("Player")
+		if ps.size() > 0:
+			playerNode = ps[0] as Node2D
+	
 	position = rallyPointA.position
 	
 	attackCooldownTimer = Timer.new()
@@ -112,9 +117,9 @@ func _on_body_detected(body: Node2D) -> void:
 		detectionCollision.disabled = true
 		detectionTimer.start()
 
-func take_damage() -> void:
+func take_damage(damage : float) -> void:
 	set_animation("damaged")
-	numberOfHits -= 1
+	numberOfHits -= damage
 	if numberOfHits <= 0:
 		die()
 	else:
