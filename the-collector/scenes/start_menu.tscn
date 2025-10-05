@@ -14,7 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TitleBackground" type="Sprite2D" parent="."]
-modulate = Color(0.70380783, 0.70380783, 0.70380783, 1)
+modulate = Color(0.22670761, 0.22670746, 0.22670746, 1)
 position = Vector2(990, 697.5)
 scale = Vector2(4.2024794, 2.3990536)
 texture = ExtResource("1_h61rw")
@@ -40,6 +40,7 @@ text = "Start Game"
 script = ExtResource("1_jwbto")
 
 [node name="TitleText" type="Sprite2D" parent="."]
+modulate = Color(0.8560673, 0.8560673, 0.85606724, 1)
 position = Vector2(963, 482)
 scale = Vector2(3.568376, 3.568376)
 texture = ExtResource("4_fcv5n")
