@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dmiorlehj4blb" path="res://prefabs/HealthBar.tscn" id="1_vs8bb"]
 [ext_resource type="PackedScene" uid="uid://r6wlfxh3wxnr" path="res://prefabs/skill_bar.tscn" id="2_ffqsk"]
 [ext_resource type="PackedScene" uid="uid://cxdkwbc6ad5ii" path="res://prefabs/card_menu.tscn" id="3_mllqi"]
-[ext_resource type="Script" uid="uid://dvwcxb733ll30" path="res://scenes/buttonRestart.gd" id="4_hifx3"]
+[ext_resource type="Script" uid="uid://dvwcxb733ll30" path="res://scripts/buttonRestart.gd" id="4_hifx3"]
 
 [node name="Control" type="Control"]
 process_mode = 3
