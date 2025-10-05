@@ -10,6 +10,7 @@ const WALL_JUMP_MAX_FALL_SPEED = 100
 const WALL_JUMP_X_VELOCITY = 300.0
 const WALL_JUMP_Y_MULTIPLIER = 0.75
 const WALL_JUMP_COOLDOWN = 0.25
+const ATTACK_COOLDOWN = 0.15
 
 var double_jumped = false
 var can_use_dash = true
@@ -18,20 +19,39 @@ var dash_timer : Timer
 var can_move = true
 var wall_jump_timer : Timer
 
+var in_attack_cooldown = false
+var attack_timer : Timer
+
 var current_animation
 
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var attack_collision = $"Attack Collision"
+@onready var block_collision = $"Block Collision"
 @export var equipment : Node2D
 
 func _ready():
 	GlobalSignals.set_checkpoint(global_position)
+	
+	dash_timer = Timer.new()
+	add_child(dash_timer)
+	dash_timer.wait_time = DASH_COOLDOWN
+	dash_timer.timeout.connect(_on_dash_timer_timeout)
+	
+	wall_jump_timer = Timer.new()
+	add_child(wall_jump_timer)
+	wall_jump_timer.wait_time = WALL_JUMP_COOLDOWN
+	wall_jump_timer.timeout.connect(_on_wall_jump_timer_timeout)
+	
+	attack_timer = Timer.new()
+	add_child(attack_timer)
+	attack_timer.wait_time = ATTACK_COOLDOWN
+	attack_timer.timeout.connect(_on_attack_timer_timeout)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
-		var is_glide_button_pressed = Input.is_action_pressed("glide")
 		velocity += get_gravity() * delta
-		if is_glide_button_pressed and velocity.y > 0 and equipment.has_card_skill_equipped(GlobalSignals.SkillType.GLIDE) and animated_sprite.animation != "wall_grab":
+		if Input.is_action_pressed("glide") and velocity.y > 0 and equipment.has_card_skill_equipped(GlobalSignals.SkillType.GLIDE) and animated_sprite.animation != "wall_grab":
 			velocity.y = move_toward(velocity.y, GLIDE_MAX_FALL_SPEED, 30)
 			animated_sprite.animation = "glide"
 		elif is_on_wall() and velocity.y > 0  and equipment.has_card_skill_equipped(GlobalSignals.SkillType.WALL_GRAB):
@@ -45,6 +65,8 @@ func _physics_process(delta: float) -> void:
 	verify_wall_jump()
 	verify_double_jump()
 	verify_dash()
+	verify_block()
+	verify_attack()
 
 	var direction := Input.get_axis("move_left", "move_right")
 	if can_move:
@@ -56,7 +78,12 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	if is_on_wall_only() and equipment.has_card_skill_equipped(GlobalSignals.SkillType.WALL_GRAB):
+	if not block_collision.disabled or not attack_collision.disabled:
+		if velocity.x < 0.0:
+			animated_sprite.flip_h = true
+		elif velocity.x > 0.0:
+			animated_sprite.flip_h = false
+	elif is_on_wall_only() and equipment.has_card_skill_equipped(GlobalSignals.SkillType.WALL_GRAB):
 		# Verify if asset needs to be flipped
 		animated_sprite.animation = "wall_grab"
 		animated_sprite.flip_h = get_last_slide_collision().get_normal().x < 0.0
@@ -91,13 +118,6 @@ func verify_dash() -> void:
 		var direction = -1 if $"AnimatedSprite2D".flip_h else 1
 		velocity.x = direction * DASH_VELOCITY
 		can_use_dash = false
-		
-		# Add cooldown
-		if dash_timer == null:
-			dash_timer = Timer.new()
-			add_child(dash_timer)
-			dash_timer.wait_time = DASH_COOLDOWN
-			dash_timer.timeout.connect(_on_dash_timer_timeout)
 		dash_timer.start()
 	
 func verify_wall_jump() -> void:
@@ -107,16 +127,29 @@ func verify_wall_jump() -> void:
 		velocity.x = direction * WALL_JUMP_X_VELOCITY
 		can_move = false
 		double_jumped = false
-		
-		if wall_jump_timer == null:
-			wall_jump_timer = Timer.new()
-			add_child(wall_jump_timer)
-			wall_jump_timer.wait_time = WALL_JUMP_COOLDOWN
-			wall_jump_timer.timeout.connect(_on_wall_jump_timer_timeout)
 		wall_jump_timer.start()
+	
+func verify_attack() -> void:
+	if Input.is_action_just_pressed("attack") and not in_attack_cooldown:
+		in_attack_cooldown = true
+		attack_collision.disabled = false
+		animated_sprite.animation = "attack"
+		attack_timer.start()
+
+func verify_block() -> void:
+	if Input.is_action_pressed("block") and equipment.has_card_skill_equipped(GlobalSignals.SkillType.BLOCK):
+		block_collision.disabled = false
+		animated_sprite.animation = "block"
+	else:
+		block_collision.disabled = true
 	
 func _on_wall_jump_timer_timeout() -> void:
 	can_move = true
 	
 func _on_dash_timer_timeout() -> void:
 	can_use_dash = true
+
+func _on_attack_timer_timeout() -> void:
+	attack_timer.stop()
+	in_attack_cooldown = false
+	attack_collision.disabled = true
