@@ -5,7 +5,7 @@ var player : Node = null
 
 const BUTTON_PROMPTS := {
 	"keyboard": "Press E",
-	"xbox":  "Press A",
+	"xbox":  "Press Y",
 	"playstation": "Press △",
 	"switch": "Press X",
 }
