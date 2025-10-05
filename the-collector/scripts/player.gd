@@ -190,5 +190,5 @@ func revive() -> void:
 	
 func _on_body_entered(target: Node):
 	if target.is_in_group("Enemy"):
-		target.take_damage(1)
+		target.take_damage(10)
 	
