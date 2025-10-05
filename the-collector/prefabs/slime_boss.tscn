@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://4di1f44vdlw6"]
+[gd_scene load_steps=40 format=3 uid="uid://4di1f44vdlw6"]
 
 [ext_resource type="Script" uid="uid://b36v23i4v0yra" path="res://scripts/slime_boss.gd" id="1_av27i"]
 [ext_resource type="PackedScene" uid="uid://cm1los2xdw864" path="res://prefabs/projectile.tscn" id="2_ked2q"]
@@ -13,19 +13,31 @@ region = Rect2(1536, 0, 128, 128)
 atlas = ExtResource("4_ked2q")
 region = Rect2(1408, 0, 128, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_oghej"]
+atlas = ExtResource("4_ked2q")
+region = Rect2(2048, 0, 128, 128)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_u7tsa"]
 atlas = ExtResource("4_ked2q")
-region = Rect2(1664, 0, 128, 128)
+region = Rect2(1408, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v1ox6"]
 atlas = ExtResource("4_ked2q")
-region = Rect2(1792, 0, 128, 128)
+region = Rect2(1536, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1422g"]
 atlas = ExtResource("4_ked2q")
+region = Rect2(1664, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffw5e"]
+atlas = ExtResource("4_ked2q")
+region = Rect2(1792, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8o0r8"]
+atlas = ExtResource("4_ked2q")
 region = Rect2(1920, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_oghej"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2oiw"]
 atlas = ExtResource("4_ked2q")
 region = Rect2(2048, 0, 128, 128)
 
@@ -128,6 +140,9 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_oghej")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_u7tsa")
 }, {
 "duration": 1.0,
@@ -137,7 +152,13 @@ animations = [{
 "texture": SubResource("AtlasTexture_1422g")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_oghej")
+"texture": SubResource("AtlasTexture_ffw5e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8o0r8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2oiw")
 }],
 "loop": false,
 "name": &"die",

@@ -28,7 +28,8 @@ var is_reviving = false
 var current_animation
 
 @onready var animated_sprite = $AnimatedSprite2D
-@onready var attack_collision = $"Attack/Attack Collision"
+@onready var attack_collision = $"AttackArea/Attack Collision"
+@onready var attack_area = $"AttackArea"
 @onready var block_collision = $"Block Collision"
 @export var equipment : Node2D
 
@@ -49,6 +50,8 @@ func _ready():
 	add_child(attack_timer)
 	attack_timer.wait_time = ATTACK_COOLDOWN
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
+	
+	attack_area.body_entered.connect(_on_body_entered)
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
@@ -184,4 +187,8 @@ func die() -> void:
 func revive() -> void:
 	is_dead = false 
 	is_reviving = true
+	
+func _on_body_entered(target: Node):
+	if target.is_in_group("Enemy"):
+		target.take_damage(10)
 	
