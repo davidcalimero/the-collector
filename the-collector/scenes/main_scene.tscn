@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ctcmx7e4rwyff" path="res://prefabs/final_card.tscn" id="6_c16ls"]
 [ext_resource type="PackedScene" uid="uid://326wa65hryn2" path="res://prefabs/checkpoint.tscn" id="8_18nlu"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8mm7a"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c16ls"]
 texture = ExtResource("2_d5x1h")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0, -8, -0.03914261)
@@ -18,7 +18,7 @@ texture = ExtResource("2_d5x1h")
 
 [sub_resource type="TileSet" id="TileSet_0f027"]
 physics_layer_0/collision_layer = 1
-sources/2 = SubResource("TileSetAtlasSource_8mm7a")
+sources/2 = SubResource("TileSetAtlasSource_c16ls")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_c16ls"]
 

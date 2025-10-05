@@ -22,6 +22,9 @@ var wall_jump_timer : Timer
 var in_attack_cooldown = false
 var attack_timer : Timer
 
+var is_dead = false
+var is_reviving = false
+
 var current_animation
 
 @onready var animated_sprite = $AnimatedSprite2D
@@ -48,6 +51,21 @@ func _ready():
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
 
 func _physics_process(delta: float) -> void:
+	if is_dead:
+		if animated_sprite.animation == "death":
+			return
+		animated_sprite.animation = "death"
+		animated_sprite.play()
+		velocity = Vector2(0,0)
+		return
+	if is_reviving:
+		if animated_sprite.animation == "revive":
+			return
+		animated_sprite.animation = "revive"
+		animated_sprite.play()
+		animated_sprite.animation_finished.connect(_on_revive_timer_timeout)
+		velocity = Vector2(0,0)
+		return
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -69,8 +87,7 @@ func _physics_process(delta: float) -> void:
 	verify_attack()
 
 	var direction := Input.get_axis("move_left", "move_right")
-	if can_move:
-		# Get the input direction and handle the movement/deceleration.
+	if can_move:		# Get the input direction and handle the movement/deceleration.
 		if direction and abs(velocity.x) <= SPEED:
 			velocity.x = direction * SPEED
 		elif abs(velocity.x) > SPEED:
@@ -157,3 +174,14 @@ func _on_attack_timer_timeout() -> void:
 	attack_timer.stop()
 	in_attack_cooldown = false
 	attack_collision.disabled = true
+
+func _on_revive_timer_timeout() -> void:
+	is_reviving = false
+
+func die() -> void:
+	is_dead = true
+	
+func revive() -> void:
+	is_dead = false 
+	is_reviving = true
+	
