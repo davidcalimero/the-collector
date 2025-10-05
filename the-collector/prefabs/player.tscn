@@ -1,8 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://bfyaoxkswd1w2"]
+[gd_scene load_steps=17 format=3 uid="uid://bfyaoxkswd1w2"]
 
 [ext_resource type="Script" uid="uid://dyme08yeqjkl6" path="res://scripts/player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://dmw1ap1cvklqr" path="res://assets/Sprites/Player/playerAnimation.png" id="2_onrkg"]
 [ext_resource type="Script" uid="uid://bushmhwwi88ru" path="res://scripts/equipment.gd" id="3_r66lb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r66lb"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1txc5"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(512, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sweqy"]
 atlas = ExtResource("2_onrkg")
@@ -34,6 +42,22 @@ region = Rect2(384, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1jxqw"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r66lb")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1txc5")
+}],
+"loop": true,
+"name": &"block",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sweqy")
@@ -94,6 +118,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(19, 18.4)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1txc5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ht1c8"]
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("equipment") groups=["Player"]]
 z_index = 3
 script = ExtResource("1_onrkg")
@@ -101,7 +129,7 @@ equipment = NodePath("Equipment")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1jxqw")
-animation = &"wall_grab"
+animation = &"block"
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 4.5)
@@ -110,3 +138,19 @@ shape = SubResource("RectangleShape2D_onrkg")
 
 [node name="Equipment" type="Node2D" parent="."]
 script = ExtResource("3_r66lb")
+
+[node name="Attack Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+rotation = 1.5707964
+scale = Vector2(0.5, 1.5)
+shape = SubResource("CapsuleShape2D_1txc5")
+disabled = true
+one_way_collision = true
+
+[node name="Block Collision" type="CollisionShape2D" parent="."]
+position = Vector2(4, 4)
+rotation = 1.5707964
+scale = Vector2(1.2, 1)
+shape = SubResource("RectangleShape2D_ht1c8")
+disabled = true
+one_way_collision = true
