@@ -2,34 +2,31 @@
 <html>
 <head>
   <meta charset="UTF-8" />
-  <title>Wrapper</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Witch's Deck</title>
   <style>
     html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
+      margin: 0; padding: 0;
       height: 100%;
+      background: #000;            /* match letterbox color */
       overflow: hidden;
-      background: #000; /* matches letterbox */
     }
+    /* Fill the visual viewport (works well on mobile, too) */
     #game {
+      position: fixed;
+      inset: 0;
+      width: 100dvw;               /* dynamic viewport units */
+      height: 100dvh;
       border: 0;
       display: block;
-      /* no fixed width/height here; we set them via JS */
+    }
+    /* Fallback for browsers without dvh/dvw (optional) */
+    @supports not (height: 100dvh) {
+      #game { width: 100vw; height: 100vh; }
     }
   </style>
 </head>
 <body>
-  <iframe id="game" src="the-collector/build/index.html" allow="fullscreen"></iframe>
-  <script>
-    const iframe = document.getElementById('game');
-    function sizeIframe() {
-      iframe.style.width  = window.innerWidth + 'px';
-      iframe.style.height = window.innerHeight + 'px';
-    }
-    sizeIframe();
-    window.addEventListener('resize', sizeIframe);
-    new ResizeObserver(sizeIframe).observe(document.body);
-  </script>
+  <iframe id="game" src="the-collector/build/index.html" allowfullscreen></iframe>
 </body>
 </html>
