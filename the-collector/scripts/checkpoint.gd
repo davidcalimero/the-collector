@@ -15,6 +15,7 @@ func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 	GlobalSignals.device_changed.connect(_on_device_changed)
+	$AnimatedSprite2D.play("default")
 
 func _unhandled_input(event: InputEvent) -> void:
 	if player and Input.is_action_just_pressed("interact"):
