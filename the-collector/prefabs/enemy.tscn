@@ -1,41 +1,42 @@
-[gd_scene load_steps=14 format=3 uid="uid://b4f0xs6c6mqmy"]
+[gd_scene load_steps=16 format=3 uid="uid://b4f0xs6c6mqmy"]
 
-[ext_resource type="Texture2D" uid="uid://cryb3nvgkjroi" path="res://assets/Sprites/Enemies/enemy1.png" id="1_6n8dw"]
+[ext_resource type="Script" uid="uid://rhn0qjr2btrg" path="res://scripts/enemy.gd" id="1_6n8dw"]
+[ext_resource type="Texture2D" uid="uid://cryb3nvgkjroi" path="res://assets/Sprites/Enemies/enemy1.png" id="2_yfjof"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yfjof"]
-atlas = ExtResource("1_6n8dw")
+atlas = ExtResource("2_yfjof")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cypye"]
-atlas = ExtResource("1_6n8dw")
+atlas = ExtResource("2_yfjof")
 region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a7d0n"]
-atlas = ExtResource("1_6n8dw")
+atlas = ExtResource("2_yfjof")
 region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aivmq"]
-atlas = ExtResource("1_6n8dw")
+atlas = ExtResource("2_yfjof")
 region = Rect2(256, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6n8dw"]
-atlas = ExtResource("1_6n8dw")
+atlas = ExtResource("2_yfjof")
 region = Rect2(320, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u6on0"]
-atlas = ExtResource("1_6n8dw")
+atlas = ExtResource("2_yfjof")
 region = Rect2(384, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ikd5g"]
-atlas = ExtResource("1_6n8dw")
+atlas = ExtResource("2_yfjof")
 region = Rect2(448, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qnk7q"]
-atlas = ExtResource("1_6n8dw")
+atlas = ExtResource("2_yfjof")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2nw32"]
-atlas = ExtResource("1_6n8dw")
+atlas = ExtResource("2_yfjof")
 region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u6on0"]
@@ -97,11 +98,15 @@ animations = [{
 "speed": 3.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ikd5g"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yfjof"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_geowp"]
 
-[node name="AnimatableBody2D" type="AnimatableBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yfjof"]
+
+[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 2
+script = ExtResource("1_6n8dw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.039215688, 0.5411765, 0.09019608, 1)
@@ -109,16 +114,31 @@ position = Vector2(1, -10)
 sprite_frames = SubResource("SpriteFrames_u6on0")
 animation = &"attack"
 autoplay = "movement"
-frame = 4
-frame_progress = 1.0
 
 [node name="Normal Collision" type="CollisionShape2D" parent="."]
-scale = Vector2(1.5, 0.7)
-shape = SubResource("CapsuleShape2D_ikd5g")
+scale = Vector2(1, 0.7)
+shape = SubResource("RectangleShape2D_yfjof")
 
 [node name="Attack Collision" type="CollisionShape2D" parent="."]
 rotation = -1.5707964
 scale = Vector2(1, 1.25)
 shape = SubResource("CapsuleShape2D_geowp")
 disabled = true
-one_way_collision = true
+
+[node name="Detection" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="Detection Collision" type="CollisionShape2D" parent="Detection"]
+rotation = 1.5707964
+scale = Vector2(1, 5)
+shape = SubResource("CapsuleShape2D_yfjof")
+disabled = true
+
+[node name="Attack Node" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="Attack Detection" type="CollisionShape2D" parent="Attack Node"]
+rotation = -1.5707964
+scale = Vector2(1, 2.5)
+shape = SubResource("CapsuleShape2D_geowp")
+debug_color = Color(0, 0.63848597, 0.38231012, 0.41960785)

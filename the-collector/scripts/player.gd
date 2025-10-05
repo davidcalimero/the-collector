@@ -28,7 +28,7 @@ var is_reviving = false
 var current_animation
 
 @onready var animated_sprite = $AnimatedSprite2D
-@onready var attack_collision = $"Attack Collision"
+@onready var attack_collision = $"Attack/Attack Collision"
 @onready var block_collision = $"Block Collision"
 @export var equipment : Node2D
 
