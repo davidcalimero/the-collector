@@ -12,6 +12,8 @@ extends CharacterBody2D
 @export var cycle_pause: float = 0.5
 
 # -------- JUMP SLAM --------
+@export var arena_radius: float = 1200.0
+var _arena_center_x: float
 @export var jump_height: float = 200.0
 @export var slam_damage_time: float = 0.25
 @export var slam_damage: float = 15
@@ -58,6 +60,7 @@ signal attack_started(kind: Attack)
 signal attack_finished(kind: Attack)
 
 func _ready() -> void:
+	_arena_center_x = global_position.x
 	if player_path != NodePath():
 		_player = get_node_or_null(player_path)
 	else:
@@ -247,16 +250,11 @@ func _pick_jump_target_x() -> float:
 			dir = 1.0
 
 	var dx := randf_range(jump_min_dx, jump_max_dx) * dir
-	var raw_target := global_position.x + dx
-	var clamped : float = clamp(raw_target, arena_left, arena_right)
+	var raw := global_position.x + dx
 
-	# se ficou muito perto, tenta ao lado oposto
-	if abs(clamped - global_position.x) < jump_min_dx * 0.6:
-		dir *= -1.0
-		dx = randf_range(jump_min_dx, jump_max_dx) * dir
-		clamped = clamp(global_position.x + dx, arena_left, arena_right)
-
-	return clamped
+	var left  := _arena_center_x - arena_radius
+	var right := _arena_center_x + arena_radius
+	return clamp(raw, left, right)
 
 # -------- CONTROLO EXTERNO --------
 func set_active(on: bool) -> void:
