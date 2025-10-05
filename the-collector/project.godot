@@ -37,6 +37,7 @@ project/assembly_name="The Collector"
 [global_group]
 
 Player=""
+Enemy=""
 
 [input]
 

@@ -264,7 +264,7 @@ radius = 51.009804
 [sub_resource type="CircleShape2D" id="CircleShape2D_ked2q"]
 radius = 138.00362
 
-[node name="BossSlime" type="CharacterBody2D"]
+[node name="BossSlime" type="CharacterBody2D" groups=["Enemy"]]
 modulate = Color(0, 0.8847416, 0.53837955, 1)
 z_index = 1
 collision_layer = 2
