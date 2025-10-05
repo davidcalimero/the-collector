@@ -33,7 +33,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x5hua"]
-radius = 9.999999
+radius = 8.0
 
 [node name="pickup" type="Area2D"]
 monitorable = false
@@ -41,6 +41,7 @@ script = ExtResource("1_vs624")
 skill = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.35, 1.35)
 sprite_frames = SubResource("SpriteFrames_knk27")
 animation = &"idle"
 autoplay = "idle"
