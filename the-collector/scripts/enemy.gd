@@ -49,8 +49,8 @@ func _ready() -> void:
 	detectionTimer.wait_time = TIME_UNTIL_DETECTION_AGAIN
 	detectionTimer.timeout.connect(_on_give_up_pursuit)
 	
-	detection.connect("body_entered", _on_body_detected)
-	attack.connect("body_entered", _on_ready_to_attack)
+	detection.body_entered.connect(_on_body_detected)
+	attack.body_entered.connect(_on_ready_to_attack)
 
 func _physics_process(delta: float) -> void:
 	velocity.y += get_gravity().y * delta
@@ -62,7 +62,6 @@ func _physics_process(delta: float) -> void:
 	elif not attackCollision.disabled:
 		xDirection = -1 if attackDirectedToLeft else 1
 		velocity.x = xDirection * ATTACK_SPEED
-		print(velocity.x)
 	elif inAttackCooldown:
 		xDirection = -1 if attackDirectedToLeft else 1
 		velocity.x = move_toward(velocity.x, 0, ATTACK_SPEED_SLOW)
@@ -113,10 +112,10 @@ func _on_body_detected(body: Node2D) -> void:
 		detectionCollision.disabled = true
 		detectionTimer.start()
 
-func _on_hit_received() -> void:
+func take_damage() -> void:
 	set_animation("damaged")
 	numberOfHits -= 1
-	if numberOfHits == 0:
+	if numberOfHits <= 0:
 		die()
 	else:
 		animatedSprite.animation_finished.connect(_on_damaged_finished)
@@ -133,7 +132,7 @@ func die() -> void:
 
 func _on_die_animation_finished() -> void:
 	queue_free()
-
-func set_animation(name: String) -> void:
-	animatedSprite.animation = name
+	
+func set_animation(animationName: String) -> void:
+	animatedSprite.animation = animationName
 	animatedSprite.play()
