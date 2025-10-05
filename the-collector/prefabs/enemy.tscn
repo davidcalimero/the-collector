@@ -104,11 +104,12 @@ animations = [{
 [node name="AnimatableBody2D" type="AnimatableBody2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.039215688, 0.5411765, 0.09019608, 1)
 position = Vector2(1, -10)
 sprite_frames = SubResource("SpriteFrames_u6on0")
-animation = &"die"
+animation = &"attack"
 autoplay = "movement"
-frame = 1
+frame = 4
 frame_progress = 1.0
 
 [node name="Normal Collision" type="CollisionShape2D" parent="."]
