@@ -70,6 +70,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6n8dw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6n8dw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6n8dw")
 }],
 "loop": true,
 "name": &"damaged",
@@ -114,7 +120,7 @@ rallyPointB = NodePath("default Rally Point B")
 modulate = Color(0.039215688, 0.5411765, 0.09019608, 1)
 position = Vector2(1, -10)
 sprite_frames = SubResource("SpriteFrames_u6on0")
-animation = &"attack"
+animation = &"damaged"
 autoplay = "movement"
 
 [node name="Normal Collision" type="CollisionShape2D" parent="."]

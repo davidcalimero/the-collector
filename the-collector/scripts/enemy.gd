@@ -75,7 +75,7 @@ func _physics_process(delta: float) -> void:
 	var xDirection : int
 	var xDestination : float
 	if animatedSprite.animation == "damaged":
-		pass
+		velocity.x = move_toward(velocity.x, 0, SPEED)
 	elif animatedSprite.animation == "attack" and not inAttackCooldown:
 		xDirection = -1 if attackDirectedToLeft else 1
 		velocity.x = xDirection * ATTACK_SPEED
@@ -143,8 +143,14 @@ func _on_player_exit(target: Node2D) -> void:
 		playerInterval.stop()
 
 func take_damage(damage : float) -> void:
-	set_animation("damaged")
+	if animatedSprite.animation == "die":
+		return
+		
+	if animatedSprite.animation != "attack":
+		set_animation("damaged")
+	
 	numberOfHits -= damage
+	
 	if numberOfHits <= 0:
 		die()
 	else:
