@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://biqlyqgxc8i6f"]
+[gd_scene load_steps=5 format=3 uid="uid://biqlyqgxc8i6f"]
 
 [ext_resource type="PackedScene" uid="uid://dmiorlehj4blb" path="res://prefabs/HealthBar.tscn" id="1_vs8bb"]
 [ext_resource type="PackedScene" uid="uid://r6wlfxh3wxnr" path="res://prefabs/skill_bar.tscn" id="2_ffqsk"]
 [ext_resource type="PackedScene" uid="uid://cxdkwbc6ad5ii" path="res://prefabs/card_menu.tscn" id="3_mllqi"]
+[ext_resource type="Script" uid="uid://dvwcxb733ll30" path="res://scripts/buttonRestart.gd" id="4_hifx3"]
 
 [node name="Control" type="Control"]
 process_mode = 3
@@ -45,3 +46,16 @@ alignment = 1
 visible = false
 layout_mode = 1
 skill_bar_path = NodePath("../SkillBar")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -99.0
+offset_top = 46.0
+offset_right = -34.0
+offset_bottom = 77.0
+grow_horizontal = 0
+text = "Restart"
+script = ExtResource("4_hifx3")
