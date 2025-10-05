@@ -77,6 +77,8 @@ func _physics_process(delta: float) -> void:
 			velocity.x = move_toward(velocity.x, 0, DASH_REVERT_SPEED)
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
+	elif is_on_floor():
+		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	if not block_collision.disabled or not attack_collision.disabled:
 		if velocity.x < 0.0:
@@ -105,11 +107,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func verify_jump() -> void:
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor() and block_collision.disabled:
 		velocity.y = JUMP_VELOCITY
 	
 func verify_double_jump() -> void:
-	if Input.is_action_just_pressed("jump") and animated_sprite.animation != "wall_grab" and not is_on_floor() and equipment.has_card_skill_equipped(GlobalSignals.SkillType.DOUBLE_JUMP) and not double_jumped:
+	if Input.is_action_just_pressed("jump") and animated_sprite.animation != "wall_grab" and not is_on_floor() and equipment.has_card_skill_equipped(GlobalSignals.SkillType.DOUBLE_JUMP) and not double_jumped and block_collision.disabled:
 		velocity.y = JUMP_VELOCITY
 		double_jumped = true;
 	
@@ -140,8 +142,10 @@ func verify_block() -> void:
 	if Input.is_action_pressed("block") and equipment.has_card_skill_equipped(GlobalSignals.SkillType.BLOCK):
 		block_collision.disabled = false
 		animated_sprite.animation = "block"
+		can_move = false
 	else:
 		block_collision.disabled = true
+		can_move = true
 	
 func _on_wall_jump_timer_timeout() -> void:
 	can_move = true
