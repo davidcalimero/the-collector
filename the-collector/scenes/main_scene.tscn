@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://6o4vmflhrj77" path="res://prefabs/skill_pickup.tscn" id="5_8mm7a"]
 [ext_resource type="PackedScene" uid="uid://ctcmx7e4rwyff" path="res://prefabs/final_card.tscn" id="6_c16ls"]
 [ext_resource type="PackedScene" uid="uid://326wa65hryn2" path="res://prefabs/checkpoint.tscn" id="8_18nlu"]
-[ext_resource type="PackedScene" uid="uid://4di1f44vdlw6" path="res://prefabs/slime_boss.tscn" id="10_6wevv"]
+[ext_resource type="PackedScene" path="res://prefabs/slime_boss.tscn" id="10_6wevv"]
 [ext_resource type="PackedScene" uid="uid://b4f0xs6c6mqmy" path="res://prefabs/enemy.tscn" id="10_e1cbu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c16ls"]
@@ -289,6 +289,7 @@ player = NodePath("../../Player")
 next_scene = "res://scenes//start_menu.tscn"
 
 [node name="Killzone" type="Area2D" parent="." node_paths=PackedStringArray("player")]
+collision_mask = 2
 script = ExtResource("3_rt2n2")
 player = NodePath("../Player")
 
