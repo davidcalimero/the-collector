@@ -55,7 +55,6 @@ func _input(event: InputEvent) -> void:
 			_end_choose_slot()
 			return
 		return
-		return
 	if event.is_action_pressed("ui_accept"):
 		var f := get_viewport().gui_get_focus_owner()
 		if f == $MarginContainer/VBoxContainer/CloseButton : 
@@ -77,7 +76,7 @@ func _toggle_menu():
 		
 func _open_menu():
 	$MarginContainer/VBoxContainer/CloseButton.grab_focus()
-	
+	get_tree().paused = true
 	visible = true
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	modulate.a = 0.0
@@ -93,6 +92,7 @@ func _close_menu():
 	t.parallel().tween_property(self, "scale", Vector2(0.95, 0.95), 0.12)
 	t.connect("finished", func():
 		visible = false
+		get_tree().paused = false
 		mouse_filter = Control.MOUSE_FILTER_IGNORE)
 
 # --------------- HELPERS ----------------
