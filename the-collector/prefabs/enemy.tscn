@@ -121,11 +121,13 @@ autoplay = "movement"
 scale = Vector2(1, 0.7)
 shape = SubResource("RectangleShape2D_yfjof")
 
-[node name="Attack Collision" type="CollisionShape2D" parent="."]
+[node name="Attack" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="Attack Collision" type="CollisionShape2D" parent="Attack"]
 rotation = -1.5707964
 scale = Vector2(1, 1.25)
 shape = SubResource("CapsuleShape2D_geowp")
-disabled = true
 
 [node name="Detection" type="Area2D" parent="."]
 collision_mask = 2
@@ -136,10 +138,10 @@ scale = Vector2(1, 5)
 shape = SubResource("CapsuleShape2D_yfjof")
 disabled = true
 
-[node name="Attack Node" type="Area2D" parent="."]
+[node name="Attack Detection" type="Area2D" parent="."]
 collision_mask = 2
 
-[node name="Attack Detection" type="CollisionShape2D" parent="Attack Node"]
+[node name="Attack Detection" type="CollisionShape2D" parent="Attack Detection"]
 rotation = -1.5707964
 scale = Vector2(1, 2.5)
 shape = SubResource("CapsuleShape2D_geowp")

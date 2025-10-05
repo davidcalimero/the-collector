@@ -5,8 +5,10 @@ const ATTACK_COOLDOWN = 0.75
 const ATTACK_SPEED = 35.0
 const ATTACK_SPEED_SLOW = 3
 const TIME_UNTIL_DETECTION_AGAIN = 5.0
-
 const HITS_UNTIL_DEATH = 3
+const IDLE_DAMAGE = 2
+const DAMAGE = 5
+const ATTACK_INTERVAL = 0.75
 
 @export var rallyPointA : Node2D
 @export var rallyPointB : Node2D
@@ -16,9 +18,10 @@ const HITS_UNTIL_DEATH = 3
 @onready var detection = $"Detection"
 @onready var detectionCollision = $"Detection/Detection Collision"
 
-@onready var attack = $"Attack Node"
-@onready var attackDetection = $"Attack Node/Attack Detection"
-@onready var attackCollision = $"Attack Collision"
+@onready var attackDetectionNode = $"Attack Detection"
+@onready var attackDetection = $"Attack Detection/Attack Detection"
+@onready var attackNode = $"Attack"
+@onready var attackCollision = $"Attack/Attack Collision"
 
 var numberOfHits = HITS_UNTIL_DEATH
 
@@ -28,6 +31,7 @@ var attackCooldownTimer : Timer
 var inAttackCooldown = false
 var detectionTimer : Timer
 var attackDirectedToLeft = false
+var playerInterval : Timer
 
 var staticRallyPointAXPosition : float
 var staticRallyPointBXPosition : float
@@ -54,9 +58,17 @@ func _ready() -> void:
 	detectionTimer.wait_time = TIME_UNTIL_DETECTION_AGAIN
 	detectionTimer.timeout.connect(_on_give_up_pursuit)
 	
+	playerInterval = Timer.new()
+	add_child(playerInterval)
+	playerInterval.wait_time = ATTACK_INTERVAL
+	playerInterval.timeout.connect(_on_player_hit)
+	
 	detection.body_entered.connect(_on_body_detected)
-	attack.body_entered.connect(_on_ready_to_attack)
-
+	attackDetectionNode.body_entered.connect(_on_ready_to_attack)
+	
+	attackNode.body_entered.connect(_on_player_enter)
+	attackNode.body_exited.connect(_on_player_exit)
+	
 func _physics_process(delta: float) -> void:
 	velocity.y += get_gravity().y * delta
 	
@@ -64,7 +76,7 @@ func _physics_process(delta: float) -> void:
 	var xDestination : float
 	if animatedSprite.animation == "damaged":
 		pass
-	elif not attackCollision.disabled:
+	elif animatedSprite.animation == "attack":
 		xDirection = -1 if attackDirectedToLeft else 1
 		velocity.x = xDirection * ATTACK_SPEED
 	elif inAttackCooldown:
@@ -83,13 +95,12 @@ func _physics_process(delta: float) -> void:
 		if abs(xDestination - position.x) <= 1.0:
 			goingFromAToB = not goingFromAToB
 	
-	animatedSprite.flip_h = xDirection > 0 if (not attackCollision.disabled or inAttackCooldown) else xDirection < 0
+	animatedSprite.flip_h = xDirection > 0 if (animatedSprite.animation == "attack" or inAttackCooldown) else xDirection < 0
 		
 	move_and_slide()
 		
 func _on_attack_finished() -> void:
 	inAttackCooldown = true
-	attackCollision.disabled = true
 	attackCooldownTimer.start()
 	
 func _on_attack_cooldown_ended() -> void:
@@ -103,10 +114,9 @@ func _on_give_up_pursuit() -> void:
 	detectionTimer.stop()
 	
 func _on_ready_to_attack(body: Node2D) -> void:
-	if body == playerNode and not inAttackCooldown and attackCollision.disabled:
+	if body == playerNode and not inAttackCooldown:
 		attackDirectedToLeft = playerNode.position.x < position.x
 		attackDetection.disabled = true
-		attackCollision.disabled = false
 		set_animation("attack")
 		animatedSprite.animation_finished.connect(_on_attack_finished)
 		detectionTimer.stop()
@@ -116,6 +126,21 @@ func _on_body_detected(body: Node2D) -> void:
 		inPursuit = true
 		detectionCollision.disabled = true
 		detectionTimer.start()
+
+func _on_player_enter(target: Node2D) -> void:
+	if target.is_in_group("Player"):
+		_on_player_hit()
+		playerInterval.start()
+		
+func _on_player_hit() -> void:
+	if animatedSprite.animation == "attack" and not inAttackCooldown:
+		GlobalSignals.emit_signal("update_health", -DAMAGE)
+	else:
+		GlobalSignals.emit_signal("update_health", -IDLE_DAMAGE) 
+
+func _on_player_exit(target: Node2D) -> void:
+	if target.is_in_group("Player"):
+		playerInterval.stop()
 
 func take_damage(damage : float) -> void:
 	set_animation("damaged")
