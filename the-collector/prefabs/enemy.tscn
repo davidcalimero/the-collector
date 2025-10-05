@@ -107,8 +107,8 @@ animations = [{
 [node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("rallyPointA", "rallyPointB") groups=["Enemy"]]
 collision_layer = 2
 script = ExtResource("1_6n8dw")
-rallyPointA = NodePath("Rally Point A")
-rallyPointB = NodePath("Rally Point B")
+rallyPointA = NodePath("default Rally Point A")
+rallyPointB = NodePath("default Rally Point B")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.039215688, 0.5411765, 0.09019608, 1)
@@ -145,8 +145,8 @@ scale = Vector2(1, 2.5)
 shape = SubResource("CapsuleShape2D_geowp")
 debug_color = Color(0, 0.63848597, 0.38231012, 0.41960785)
 
-[node name="Rally Point A" type="Node2D" parent="."]
+[node name="default Rally Point A" type="Node2D" parent="."]
 position = Vector2(-80, 0)
 
-[node name="Rally Point B" type="Node2D" parent="."]
+[node name="default Rally Point B" type="Node2D" parent="."]
 position = Vector2(80, 0)
