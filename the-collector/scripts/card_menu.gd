@@ -106,7 +106,7 @@ func _start_choose_slot(card: Control) -> void:
 	if _slots.is_empty():
 		return
 	_origin_card = card
-	
+	_set_slots_focus_enabled(true)
 	_selected_card_data = {
 		"source_type": "card",
 		"from_path": card.get_path(),
@@ -141,7 +141,13 @@ func _confirm_apply_to_focused_slot() -> void:
 		f.apply_card(_selected_card_data)
 	_end_choose_slot()
 	
+func _set_slots_focus_enabled(enabled: bool) -> void:
+	for s in _slots:
+		if not is_instance_valid(s): continue
+		s.focus_mode = Control.FOCUS_ALL if enabled else Control.FOCUS_NONE
+	
 func _end_choose_slot() -> void:
+	_set_slots_focus_enabled(false)
 	_choosing_slot = false
 	_selected_card_data.clear()
 	_preview.visible = false
